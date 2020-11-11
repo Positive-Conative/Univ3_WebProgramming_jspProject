@@ -1,0 +1,268 @@
+@charset "EUC-KR";
+@font-face{
+    font-family: "maple";
+    src: url("./font/Maplestory Light.ttf") format("truetype");
+    font-style:normal;
+    font-weight: normal;
+}
+@font-face{
+    font-family: "maple_b";
+    src: url("./font/Maplestory Bold.ttf") format("truetype");
+    font-style:normal;
+    font-weight: normal;
+}
+
+body{
+    margin:0px;
+    font-family: "maple";
+}
+section{
+    padding:3rem;
+}
+header {
+    position: sticky;
+    background-color: white;
+    top: 0px;
+    height:40px;
+    padding:30px;
+    font-family: "maple_b";
+    z-index: 9999;
+}
+header img{
+    float:left;
+    width:200px;
+    display:inline-block;
+}
+nav{
+    display:inline;
+    width:100%;
+    background-image: linear-gradient(transparent calc(100% - 3px), #000 3px);
+}
+nav>li{
+    list-style:none;
+    float:left;
+    margin-left:10px;
+    padding-top:20px;
+
+    /* ANIMATION */
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    transition: background-size 0.4s;
+    color: #000;
+    cursor: pointer;
+    background-image: linear-gradient(transparent 60%, lightgray 40%);
+}
+nav>li:hover{
+    color:red;
+    cursor: pointer;
+    background-size: 100% 100%;
+}
+
+
+#mainimg{
+    max-width: 100%;
+    height: auto;
+    position: relative;
+}
+#mainimg_text{
+    position: absolute;
+    top:50%;
+    left:15%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 2;
+    text-align: center;
+}
+#mainimg_text h1{
+    font-size:3rem;
+}
+#mainimg_text input[type="button"]{
+    border-radius: 30px;
+    margin-top:15px;
+    background-color: yellowgreen;
+    color:white;
+}
+.navRight{
+    float:right;
+    padding-top:20px;
+}
+input[type="text"]{
+    width: 150px;
+    outline-style: none;
+    transition: width .35s ease-in-out;
+}
+input[type="text"]:hover, input[type="text"]:focus {
+    width: 250px;
+}
+button[type="submit"] img{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+}
+.board_section{
+    display:grid;
+    grid-template-rows: 100px;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    text-align: center;
+}
+
+
+#card_container{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.card_footer{
+    position: absolute;
+    bottom:0;
+}
+.card{
+    width:13vw;
+    height:250px;
+    border:1px solid black;
+    box-shadow: 5px 5px 10px 3px grey;
+    cursor: pointer;
+    margin:10px;
+    position: relative;
+}
+.board_section .card:active{
+    background-color: gray;
+    position: relative;
+    top: 3px;
+    left: 3px;
+    opacity: 85%;
+}
+.card img{
+    max-width: 100%;
+    height:150px;
+}
+#free{
+    margin:10px;
+}
+#free thead tr{
+    background-color: rgb(158, 156, 156);
+}
+#free tr{
+    height:40px;
+}
+.board_section>#free tbody tr:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+.board_section table{
+    width:100%;
+}
+.board_section table, .board_section td, .board_section th {
+    border-collapse: collapse;
+    border: 1px solid black;   
+}
+
+footer{
+    background-color: lightgray;
+    padding:30px;
+    margin-top:20vw;
+    height:100px;
+}
+
+/* Developer Page */
+
+.developer_section .card{
+    width: 24vw;
+    height: 450px;
+    border:1px solid black;
+    display:inline-block;
+    transform: skew(-15deg);
+    text-align:center;
+    /* animation */
+    animation-name: slideCards;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+}
+.developer_section .card:nth-child(1){
+    animation-duration:2s;
+}
+.developer_section .card:nth-child(2){
+    animation-duration:1.5s;
+}
+.developer_section .card:nth-child(3){
+    animation-duration:1s;
+}
+@keyframes slideCards {
+    from {
+        right:100%;
+    }
+    to {
+        right:-10%;
+    }
+}
+@keyframes slideCardsBack {
+    from {
+        left:30%;
+    }
+    to {
+        left:0%;
+    }
+}
+.developer_section>.card>h2{
+    text-align:center
+}
+.developer_section>.card>img{
+    width:90%;
+    height:50%;
+}
+
+#modal{
+    display: none;
+    z-index: 99999;
+    position: fixed;
+    width: 100%; 
+    height: 100%;
+    left: 0; top: 0;
+    background-color: rgba(0,0,0, 0.4);
+    overflow-x: hidden;
+    text-align: center;
+}
+#modal .content {
+    display: inline-block;
+    top:40%;
+    position:relative;
+    width:500px;
+    height:300px;
+    background-color: white;
+}
+#modal .content table{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#modal .content table, .content td, .content th {
+    border: 1px solid black;   
+    border-collapse: collapse;
+}
+/*.developer_section .card:active{
+    background-color: gray;
+    position: relative;
+    top: 3px;
+    left: 150px;
+    opacity: 85%;
+}*/
+/*
+#uitLogoArea{
+    width: 10vw;
+    position: relative;
+    top: 150px;
+    right:1px;
+    margin-left:3vw;
+
+    /* animation */
+    /* animation-name: slideCardsBack;
+    animation-duration: leaner;
+    animation-iteration-count:1;
+    animation-duration:1s;
+    animation-direction:alternate;
+    animation-fill-mode: forwards;
+} */
