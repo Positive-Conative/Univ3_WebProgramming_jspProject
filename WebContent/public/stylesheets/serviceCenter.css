@@ -1,0 +1,64 @@
+@charset "EUC-KR";
+.SCcontent{
+    text-align: center;
+}
+.SCcontent .imgarea{
+    position: relative;
+}
+.SCcontent .imgarea img{
+    height:50vh;
+    width:100%;
+    opacity: 30%;
+    vertical-align: middle;
+}
+.imgarea .img_text {
+	width: 100%;
+    position: absolute;
+    left: 0%;
+    bottom: 50%;
+}
+.SCcontent .content{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+    table-layout: fixed;
+    width:100%;
+}
+#navi{
+    border:1px solid black;
+}
+.content #navi li{
+    list-style:none;
+    cursor: pointer;
+    margin-bottom:10px;
+    height:40px;
+    padding-top:1em;
+}
+.content #navi li:hover{
+    background-color: lightgray;
+}
+
+.content #navi{
+    width:20%;
+    position: relative;
+}
+.content #main_content{
+    width:80%;
+    position: relative;
+}
+#main_content table{
+    margin-left:auto;
+    margin-right:auto;
+    border-collapse: collapse;
+    width:70%;
+}
+#main_content table td, #main_content table th{
+    border-bottom:1px solid black;
+}
+#main_content table tr{
+    height:40px;
+}
+#main_content table tbody tr:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
