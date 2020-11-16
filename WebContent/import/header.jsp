@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="public/stylesheets/index.css" rel="stylesheet"/>
-    <title>Document</title>
+    <title>Hoseo World</title>
 </head>
     <body>
         <header>
@@ -20,9 +20,9 @@
                 <li>고객센터</li>
                 <li onclick="location.href='developerIndex.jsp'">개발자 정보</li>
                 <div class="navRight">
-                LOG IN
                     <input type="text" placeholder="Search"/>
                     <button type="submit"><img src="public/images/loupe.png"></button>
+                LOG IN
                 </div>
             </nav>
         </header>

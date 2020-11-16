@@ -91,7 +91,7 @@ input[type="text"]{
     outline-style: none;
     transition: width .35s ease-in-out;
 }
-input[type="text"]:hover, input[type="text"]:focus {
+header input[type="text"]:hover, input[type="text"]:focus {
     width: 250px;
 }
 button[type="submit"] img{
@@ -181,13 +181,16 @@ footer{
     animation-direction:alternate;
     animation-fill-mode: forwards;
 }
-.developer_section .card:nth-child(1){
-    animation-duration:2s;
+.developer_section .card:hover{
+	background-color:lightgray;
 }
 .developer_section .card:nth-child(2){
-    animation-duration:1.5s;
+    animation-duration:2s;
 }
 .developer_section .card:nth-child(3){
+    animation-duration:1.5s;
+}
+.developer_section .card:nth-child(4){
     animation-duration:1s;
 }
 @keyframes slideCards {
@@ -213,7 +216,6 @@ footer{
     width:90%;
     height:50%;
 }
-
 #modal{
     display: none;
     z-index: 99999;
@@ -242,6 +244,21 @@ footer{
 #modal .content table, .content td, .content th {
     border: 1px solid black;   
     border-collapse: collapse;
+}
+.developer_section input[type="button"]{
+	margin-top:50px;
+}
+section h1{
+	text-align:center;
+}
+.logos{
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+.logos img{
+	display:inline-block;
+	margin-right:10px;
 }
 /*.developer_section .card:active{
     background-color: gray;
