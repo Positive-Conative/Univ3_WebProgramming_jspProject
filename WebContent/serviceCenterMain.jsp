@@ -17,11 +17,11 @@
             <tr>
                 <th id="navi" valign="top">
                     <div>
-                        <li>고객센터</li>
-                        <li>공지사항</li>
-                        <li>FAQ</li>
-                        <li>Q&A</li>
-                        <li>신고하기</li>
+                        <li onclick="location.href='serviceCenterMain.jsp'">고객센터</li>
+                        <li onclick="location.href='notice.jsp'">공지사항</li>
+                        <li onclick="location.href='faq.jsp'">FAQ</li>
+                        <li onclick="location.href='qna.jsp'">Q&A</li>
+                        <li onclick="location.href='serviceCenterMain.jsp'">신고하기</li>
                     </div>
                 </th>
                 <td id="main_content">
