@@ -24,9 +24,7 @@
     table-layout: fixed;
     width:100%;
 }
-#navi{
-    border:1px solid black;
-}
+/* #navi{ border:1px solid black; } */
 .content #navi li{
     list-style:none;
     cursor: pointer;
@@ -52,13 +50,27 @@
     border-collapse: collapse;
     width:70%;
 }
-#main_content table td, #main_content table th{
-    border-bottom:1px solid black;
-}
+/* #main_content table td, #main_content table th{ border-bottom:1px solid black; } */
 #main_content table tr{
     height:40px;
 }
 #main_content table tbody tr:hover{
     background-color: lightgray;
     cursor: pointer;
+}
+.faq_table tr{
+    border:1px;
+}
+.faq_table td{
+    border:0;
+}
+.SCcontent .faqDetail{
+    border-collapse: collapse;
+    width:70%;
+    height:20vw;
+	table-layout: fixed;
+}
+.SCcontent .faqDetail th, .SCcontent .faqDetail td{
+    border: 1px solid black;
+    height:50px;
 }

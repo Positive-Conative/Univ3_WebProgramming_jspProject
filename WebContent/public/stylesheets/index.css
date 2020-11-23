@@ -241,7 +241,7 @@ footer{
     margin-right: auto;
 }
 
-#modal .content table, .content td, .content th {
+#modal .content table, #modal .content td, #modal .content th {
     border: 1px solid black;   
     border-collapse: collapse;
 }
@@ -260,6 +260,24 @@ section h1{
 	display:inline-block;
 	margin-right:10px;
 }
+.bt{
+    border-radius: 15px;
+    width: 150px;
+    height: 30px;
+    border: none;
+    background-color: #a0e0f5;
+    font-size: 15px;
+    padding: 5px;
+    margin: 5px;
+    outline: none;
+    font-family: "maple-b";
+ }
+ .bt:active{
+     background-color: #2a97bb;
+ }
+ .bt:hover{
+    background-color: #66d1f5;
+ }
 /*.developer_section .card:active{
     background-color: gray;
     position: relative;

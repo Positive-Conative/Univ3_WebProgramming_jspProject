@@ -8,17 +8,17 @@
     <div id="kyj" class="card">
         <h2>김영재 20161477</h2>
         <img src="public/images/KYJ.jpg"/><br>
-        <input type="button" value="Detail >>" onclick="modal_show('kyj')"/>
+        <input class="bt" type="button" value="Detail >>" onclick="modal_show('kyj')"/>
     </div>
     <div id="kdh" class="card">
         <h2>김동헌 20161471</h2>
         <img src="public/images/KDH.jpg"/><br>
-        <input type="button" value="Detail >>" onclick="modal_show('kdh')"/>
+        <input class="bt" type="button" value="Detail >>" onclick="modal_show('kdh')"/>
     </div>
     <div id="ksy" class="card">
         <h2>권순영 20161468</h2>
         <img src="public/images/KSY.png"/><br>
-        <input type="button" value="Detail >>" onclick="modal_show('ksy')"/>
+        <input class="bt" type="button" value="Detail >>" onclick="modal_show('ksy')"/>
     </div>
     <!-- <img id="uitLogoArea" src="../image/uitlogo.PNG"/> -->
 </section>

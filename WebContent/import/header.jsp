@@ -17,12 +17,12 @@
             <nav>
                 <li>거래게시판</li>
                 <li>자유게시판</li>
-                <li>고객센터</li>
+                <li onclick="location.href='serviceCenterMain.jsp'">고객센터</li>
                 <li onclick="location.href='developerIndex.jsp'">개발자 정보</li>
                 <div class="navRight">
                     <input type="text" placeholder="Search"/>
-                    <button type="submit"><img src="public/images/loupe.png"></button>
-                LOG IN
+                    <button class="bt" type="submit" style="width:25px;"><img src="public/images/loupe.png"></button>
+                <a>LOG IN</a>
                 </div>
             </nav>
         </header>
