@@ -15,15 +15,7 @@
     <table class="content">
         <tbody>
             <tr>
-                <th id="navi" valign="top">
-                    <div>
-                        <li onclick="location.href='serviceCenterMain.jsp'">고객센터</li>
-                        <li onclick="location.href='notice.jsp'">공지사항</li>
-                        <li onclick="location.href='faq.jsp'">FAQ</li>
-                        <li onclick="location.href='qna.jsp'">Q&A</li>
-                        <li onclick="location.href='serviceCenterMain.jsp'">신고하기</li>
-                    </div>
-                </th>
+				<%@ include file="import/navi.jsp" %>
                 <td id="main_content">
                     <div>
                         <h1>고객센터</h1>
