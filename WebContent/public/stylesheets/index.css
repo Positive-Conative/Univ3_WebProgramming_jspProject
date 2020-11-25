@@ -86,12 +86,12 @@ nav>li:hover{
     float:right;
     padding-top:20px;
 }
-input[type="text"]{
+header input[type="text"]{
     width: 150px;
     outline-style: none;
     transition: width .35s ease-in-out;
 }
-header input[type="text"]:hover, input[type="text"]:focus {
+header input[type="text"]:hover, header input[type="text"]:focus {
     width: 250px;
 }
 button[type="submit"] img{

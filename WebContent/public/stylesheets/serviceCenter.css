@@ -74,3 +74,8 @@
     border: 1px solid black;
     height:50px;
 }
+.bt-toolbar{
+	background-color:gray;
+	color:white;
+	border-radius: 30px;
+}
