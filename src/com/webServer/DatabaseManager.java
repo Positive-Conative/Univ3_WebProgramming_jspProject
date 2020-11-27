@@ -9,6 +9,7 @@ public class DatabaseManager {
 	 private Connection conn;
 	 private PreparedStatement pstmt;
 	 private ResultSet rs;
+	 private int rs_insert;
 	 private String dbURL = "";
 	 private String dbID = "";
 	 private String dbPW = "";
@@ -18,15 +19,36 @@ public class DatabaseManager {
 		 dbID = "root";
 		 dbPW = "dudwoalswo12";
 	 }
-	 public ResultSet dbLoad(String sql, JSONObject parameters) {
+	 @SuppressWarnings("unchecked")
+	public ResultSet dbLoad(String sql, JSONObject parameters, String flag) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPW);
 			pstmt = conn.prepareStatement(sql);
 			if(parameters != null) {
-		         pstmt.setString(1, parameters.get("uid").toString());
+//				System.out.println("asdf : " + parameters.keySet());
+				parameters.forEach((key, value)
+						-> {
+							try {
+								System.out.println(Integer.parseInt(key.toString()) +", "+ value.toString());
+								pstmt.setString(Integer.parseInt(key.toString()), value.toString());
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						});
+					    //-> System.out.println("key: " + key + ", value: " + value));
+		         //pstmt.setString(1, parameters.get("uid").toString());
+				
 			}
-			rs = pstmt.executeQuery();
+			switch(flag) {
+			case "select":
+				rs = pstmt.executeQuery();
+				break;
+			case "insert":
+				rs_insert = pstmt.executeUpdate();
+				break;
+			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
