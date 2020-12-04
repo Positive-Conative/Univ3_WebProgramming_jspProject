@@ -7,7 +7,7 @@
         <!-- <li onclick="location.href='serviceCenterMain.jsp'">고객센터</li> -->
         <li onclick="location.href='notice.jsp?pnum=1'">공지사항</li>
         <li onclick="location.href='faq.jsp'">FAQ</li>
-        <li onclick="location.href='qna.jsp'">Q&A</li>
+        <li onclick="location.href='qna.jsp?pnum=1'">Q&A</li>
         <li onclick="location.href='report.jsp'">신고하기</li>
     </div>
 </th>
