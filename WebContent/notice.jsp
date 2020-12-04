@@ -5,8 +5,8 @@
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="notice_DAO" scope="page" class="com.webServer.serviceCenterDAO"/>
-
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
+
     <section class="SCcontent">
         <div class="imgarea">
             <img src="public/images/mainimg1.jpg">

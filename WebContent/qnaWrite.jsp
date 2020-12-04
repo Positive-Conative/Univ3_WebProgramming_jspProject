@@ -10,21 +10,11 @@
 <jsp:setProperty name="report_DO" property="*"/>
 
 <%
-	//DatabaseManager dm = new DatabaseManager();
-	//String a = dm.LoadTest();
-	//JSONParser parser = new JSONParser();
-	//Object o = parser.parse(a);
-	//JSONArray ja = (JSONArray)o;
-	//JSONObject element = (JSONObject)ja.get(1);
-	//String b = (String)element.get("title");
-	//out.print(b);
-	if(request.getParameter("accused")!=null && 
-		request.getParameter("title")!=null &&
-		request.getParameter("content")!=null){
+	if( request.getParameter("content")!=null &&
+		request.getParameter("title")!=null){
 		
-		out.println("<script>alert('등록되었습니다."+request.getParameter("accused")+"')</script>");
-		serviceCenterDAO.inputReportToDB("NoName",request.getParameter("accused"), request.getParameter("title"), request.getParameter("content"));
-
+		serviceCenterDAO.inputQnaToDB("NoName",request.getParameter("title"), request.getParameter("content"));
+		out.println("<script>alert('등록되었습니다."+request.getParameter("content")+"'); location.href='qna.jsp?pnum=1'</script>");
 	}
 %>
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
@@ -37,22 +27,22 @@
                 작은 소리는 무시하겠습니다.(?)
             </div>
         </div>
-        <form method="post">
+        <form method="post" >
         <table class="content">
             <tbody>
                 <tr>
                     <%@ include file="import/navi.jsp" %>
                     <td id="main_content">
                         <div>
-                            <h1>신 고 하 기</h1>
+                            <h1>Q & A 작 성</h1>
                             <table>
                                 <tbody>
                                 	<tr>
-                                       <th>신고자 ID<br><small>(신고하는 자)</small></th>
+                                       <th>작성 ID<br></th>
                                        <th>Conative's</th> 
-                                       <th>피신고자 ID<br><small>(신고받는 자)</small></th>
+                                       <th>현재 시간<br></th>
                                        <th>
-                                      		<input type="text" name="accused" style="width:80%" placeholder="신고하려는 사람의 ID를 작성"/>
+                                      		ㅁㄴㅇㄹ
                                        </th>
                                     </tr>
                                     <tr>
