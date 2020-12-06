@@ -9,8 +9,37 @@ import java.sql.SQLException;
 import org.apache.tomcat.dbcp.dbcp2.SQLExceptionList;
 import org.json.simple.JSONArray;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+import org.apache.commons.codec.binary.Base64;
+
 public class user_infoDAO {
 	DatabaseManager dm = new DatabaseManager();
+	
+	public static String encrypt(String str) {
+        byte[] crypted = null;
+        String key = "webprogramming";
+        String iv = key.substring(0, 16);
+        try {
+ 
+            SecretKeySpec skey = new SecretKeySpec(key.getBytes(), "AES");
+ 
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+            cipher.init(Cipher.ENCRYPT_MODE, skey, new IvParameterSpec(iv.getBytes()));
+            crypted = cipher.doFinal(str.getBytes("UTF-8"));
+        } catch(Exception e) {
+            System.out.println(e.toString());
+        }
+ 
+        String enStr = new String(Base64.encodeBase64(crypted));
+ 
+        return enStr;
+    }
 	
 	public boolean signin(String id, String pw) throws SQLException{
 		JSONObject parameters = new JSONObject();
