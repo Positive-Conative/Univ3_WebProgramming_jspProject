@@ -1,3 +1,4 @@
+<%@page import="com.sun.jdi.Location"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="org.json.simple.parser.JSONParser"%>
@@ -16,23 +17,27 @@
 	<form method="post">
 		<div class="form">
         	<a href="#"><img class="prev" src="./public/images/exit1.png" alt="" onclick="back()"></a><br>
-        	<a href="#"><img class="logo" src="./public/images/logo.PNG"></a><br>
+        	<a href="index.jsp"><img class="logo" src="./public/images/logo.PNG"></a><br>
         	<input class="id" type="text" placeholder="학번" id="num" name="num"><br>
 	        <hr width="250px">
         	<input class="pw" type="password" placeholder="비밀번호" id="pw" name="pw"><br>
         	<hr width="250px">
         	<p align="left"><input type="checkbox" style="margin-left: 60px;"> ID 저장</p>
         	<input type="submit" class="bt" value="로그인"><br>
-        	<a href="./signup.jsp"><button class="bt">회원가입</button></a><br>
+        	<a href="signup.jsp"><button class="bt" onclick="location=signup.jsp">회원가입</button></a><br>
 	        <a href=""><div class="mg">비밀번호를 잊으셨나요?</div></a>
     	</div>
     </form>
 </body>
 
 <%
+request.setCharacterEncoding("UTF-8");
+
 if(request.getParameter("num")!=null && request.getParameter("pw")!=null){
 	if(user_infoDAO.signin(request.getParameter("num"), request.getParameter("pw"))){
 		out.println("<script>alert('Success')</script>");
+		session.setAttribute("num", request.getParameter("num"));
+		response.sendRedirect("index.jsp");
 	}
 	else{
 		out.println("<script>alert('Fail')</script>");
@@ -45,7 +50,6 @@ if(request.getParameter("num")!=null && request.getParameter("pw")!=null){
 function back(){
     window.history.back();
 }
-
 </script>
 
 </html>

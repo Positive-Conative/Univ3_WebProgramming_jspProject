@@ -2,6 +2,19 @@
     pageEncoding="utf-8"%>
 <%@ include file="import/header.jsp" %>
 
+<%
+	session.getAttribute("num");
+
+	String num = (String)session.getAttribute("num");
+
+	if(num == null || num.equals("")){
+		out.println("<script>alert('no session')</script>");
+	}
+	else{
+		out.println("<script>alert('use session')</script>");
+	}
+%>
+
 <div class="img_section">
     <img id="mainimg" src="public/images/mainimg2.jpg" alt="LOGO"/>
     <div id="mainimg_text">
