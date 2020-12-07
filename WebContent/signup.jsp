@@ -15,28 +15,8 @@
     <div class="form">
         <div class="head">약관 동의</div>
         <hr color="lightgray" width="550px">
-        <a href="#" onclick=""><div align=left class="check"><input type="checkbox" style="width: 15px; height: 15px; margin-top: 5px;"><span style="margin-bottom: 5px;"><span style="font-size: 20px;">개인정보 수집 및 이용 동의</span></div></a>
+        <a href="#" onclick="show()"><div align=left class="check"><input type="checkbox" style="width: 15px; height: 15px; margin-top: 5px;" id=agree><span style="margin-bottom: 5px;"><span style="font-size: 20px;">개인정보 수집 및 이용 동의</span></div></a>
         <div class="r"></div>
-        
-        <!--<textarea readonly class="ta" style="font-size: 10px;">
-        
-        [개인정보 수집 및 이용 동의]
-
-        HOSEOWORLD은 다음과 같이 개인정보를 수집 및 이용하고 있습니다.
-            
-        - 수집 및 이용 목적: 회원 가입, 게시판서비스 제공, 이용자 식별
-        - 항목: 학번, 비밀번호
-
-        - 수집 및 이용 목적: 본인확인, 이용자 식별, 부정이용 방지, 중복가입 방지
-        - 항목: 이름, 휴대폰번호
-
-        - 보유 및 이용기간: 회원탈퇴일로부터 30일
-          (법령에 특별한 규정이 있을 경우 관련 법령에 따라, 부정이용기록은 회원탈퇴일로부터 1년)
-
-        동의를 거부할 경우 회원가입이 불가능 합니다.
-            
-        ※ 그 외의 사항 및 자동 수집 정보와 관련된 사항은 개인정보처리방침을 따릅니다.
-        </textarea><br>-->
 
 		<form method="post">
         	<div align=left class="label">학번<span class="help_form" id="num_ch"></span></div>
@@ -49,39 +29,72 @@
         	<input type="text" class="input_value" id="name" placeholder="이름" name="name">
         	<div align=left class="label">휴대폰 번호<span class="help_form" id="ph_ch"></span></div>
         	<div style="font-family: maple;">
-            <input type="text" class="phone" id="ph1" onblur="ph1_check()" name="ph1"> - 
-            <input type="text" class="phone" id="ph2" onblur="ph2_check()" name="ph2"> - 
-            <input type="text" class="phone" id="ph3" onblur="ph3_check()" name="ph3">
+            	<input type="text" class="phone" id="ph1" onblur="ph_check()" name="ph1" maxlength=3> - 
+            	<input type="text" class="phone" id="ph2" onblur="ph_check()" name="ph2" maxlength=4> - 
+            	<input type="text" class="phone" id="ph3" onblur="ph_check()" name="ph3" maxlength=4>
         	</div>
         
         	<div align=center style="margin-top: 20px">
-        		<form>
-		        	<div class="g-recaptcha" data-sitekey="6LeolOMZAAAAAPVRPOOcJCOk1iiNOcNO5P2_djl7"></div>
-	    		</form>
+			    <div class="g-recaptcha" data-sitekey="6LeolOMZAAAAAPVRPOOcJCOk1iiNOcNO5P2_djl7"></div>
     		</div>
         
-        	<button class="can" type="submit" onclick="back()">이전</button>
+        	<button class="can" onclick="re_check()">이전</button>
         	<input class="sub" type="submit" value="다음">
         </form>
     </div>
+    
+    <div class="pop" id="modal">
+    	<div class="view">
+            	[개인정보 수집 및 이용 동의]<br><br>
+
+            	HOSEOWORLD은 다음과 같이 개인정보를 수집 및 이용하고 있습니다.<br><br>
+
+            	- 수집 및 이용 목적: 회원 가입, 게시판서비스 제공, 이용자 식별<br>
+            	- 항목: 학번, 비밀번호<br><br>
+
+        	    - 수집 및 이용 목적: 본인확인, 이용자 식별, 부정이용 방지, 중복가입 방지<br>
+    	        - 항목: 이름, 휴대폰번호<br><br>
+
+	            - 보유 및 이용기간: 회원탈퇴일로부터 30일<br>
+            	(법령에 특별한 규정이 있을 경우 관련 법령에 따라, 부정이용기록은 회원탈퇴일로부터 1년)<br><br>
+
+            	동의를 거부할 경우 회원가입이 불가능 합니다.<br><br>
+
+            	※ 그 외의 사항 및 자동 수집 정보와 관련된 사항은 개인정보처리방침을 따릅니다.<br><br>
+            <div align=center>
+    	        <button class="can" onclick="info_no()">거부</button>
+                <button class="sub" onclick="info_agree()">동의</button>
+            </div>
+        </div>
+    </div>
 </body>
 
-<%
-request.setCharacterEncoding("UTF-8");   
+<script type="text/javascript">
 
-if(request.getParameter("num")!=null && request.getParameter("pw")!=null && request.getParameter("name")!=null){
-	String phone = request.getParameter("ph1") + request.getParameter("ph2") + request.getParameter("ph3");
-	
-	if(user_infoDAO.signup(request.getParameter("num"), request.getParameter("pw"), "hello", request.getParameter("name"), phone, request.getParameter("address"))){
-		out.println("<script>alert('Success')</script>");
+function show(){
+    document.getElementById('modal').style.display='block';
+}
+
+function info_agree(){
+    document.getElementById('modal').style.display='none';
+    document.getElementById('agree').checked = true;
+}
+
+function info_no(){
+    document.getElementById('modal').style.display='none';
+    document.getElementById('agree').checked = false;
+}
+
+function re_check(){
+	if(grecaptcah.getResponse() == ""){
+		alert('reCAPTCHA Check');
+		return false;
 	}
 	else{
-		out.println("<script>alert('Fail')</script>");
+		alert('hello');		
+		return true;	
 	}
 }
-%>
-
-<script type="text/javascript">
 
 function num_check(){
     var num = document.getElementById("num").value;
@@ -94,34 +107,14 @@ function num_check(){
         num_ch.innerHTML = " ";
 }
 
-function ph1_check(){
+function ph_check(){
     var ph1 = document.getElementById("ph1").value;
-
-    var ph_ch = document.getElementById("ph_ch");
-
-    if(isNaN(ph1))
-        ph_ch.innerHTML = "전화번호가 잘못 되었습니다.";
-    else
-        ph_ch.innerHTML = " ";
-}
-
-function ph2_check(){
     var ph2 = document.getElementById("ph2").value;
-
-    var ph_ch = document.getElementById("ph_ch");
-
-    if(isNaN(ph2))
-        ph_ch.innerHTML = "전화번호가 잘못 되었습니다.";
-    else
-        ph_ch.innerHTML = " ";
-}
-
-function ph3_check(){
     var ph3 = document.getElementById("ph3").value;
-
+    
     var ph_ch = document.getElementById("ph_ch");
 
-    if(isNaN(ph3))
+    if(isNaN(ph1) || isNaN(ph2) || isNaN(ph3))
         ph_ch.innerHTML = "전화번호가 잘못 되었습니다.";
     else
         ph_ch.innerHTML = " ";

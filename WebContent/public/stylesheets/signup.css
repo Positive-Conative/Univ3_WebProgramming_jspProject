@@ -58,6 +58,29 @@ input::placeholder{
 	transform: translateY(-15%);
 }
 
+.pop{
+    z-index: 9999;
+    position: fixed;
+    width: 100%; 
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+	overflow: hidden;
+	display: none;
+}
+
+.view{
+	padding: 50px;
+	width: 560px;
+	height: 350px;
+	border-radius: 15px;
+	background-color: white;
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 .form{
 	width: 650px;
 	height: 750px;
@@ -150,41 +173,4 @@ input::placeholder{
 	margin-left: 15px;
 	font-size: 12px;
 	color: red;
-}
-
-.modal_wrap{
-	display: none;
-	width: 500px;
-	height: 500px;
-	position: absolute;
-	top:50%;
-	left: 50%;
-	margin: -250px 0 0 -250px;
-	background:#eee;
-	z-index: 2;
-}
-.black_bg{
-	display: none;
-	position: absolute;
-	content: "";
-	width: 100%;
-	height: 100%;
-	background-color:rgba(0, 0,0, 0.5);
-	top:0;
-	left: 0;
-	z-index: 1;
-}
-.modal_close{
-	width: 26px;
-	height: 26px;
-	position: absolute;
-	top: -30px;
-	right: 0;
-}
-.modal_close> a{
-	display: block;
-	width: 100%;
-	height: 100%;
-	background:url(https://img.icons8.com/metro/26/000000/close-window.png);
-	text-indent: -9999px;
 }

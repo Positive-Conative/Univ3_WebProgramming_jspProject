@@ -1,0 +1,136 @@
+@font-face {
+	font-family: "maple";
+	src: url('./font/Maplestory\ Light.ttf');
+	font-weight: normal;
+	font-style: normal;
+}   
+
+@font-face {
+	font-family: "maple-b";
+	src: url('./font/Maplestory\ Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.tag{
+	text-align: center;
+	font-size: 30px;
+	font-family: maple-b;
+	margin-top: 30px;
+}
+
+a:hover{
+	color: #000000;
+	text-decoration: none;
+}
+
+a:active{
+	color: #000000;
+	text-decoration: none;
+}
+
+a:focus{
+	color: #000000;
+	text-decoration: none;
+}
+
+a:visited{
+	color: #000000;
+	text-decoration: none;
+}
+
+a:link{
+	color: #000000;
+	text-decoration: none;
+}
+
+.menu{
+	margin-top: 15px;
+	padding: 15px;
+	font-family: maple;
+	font-size: 20px;
+}
+
+.front_main{
+	width: 20%;
+	vertical-align: top;
+	text-align: center;
+}
+
+.back_main{
+	width: 80%;
+	padding: 30px;
+}
+
+.front_sub{
+	border: 1px solid black;
+	width: 30%;
+	text-align: center;
+	padding: 40px
+}
+
+.back_sub{
+	border: 1px solid black;
+	width: 70%;
+	padding: 15px;
+}
+
+.view_name{
+	font-size: 20px;
+}
+
+input::placeholder{
+	font-family: maple;
+	font-size: 15px;
+	transform: translateY(-15%);
+}
+
+.input_value{
+	width: 90%;
+	border: 1px solid black;
+	font-size: 15px;
+	font-family: maple;
+}
+
+.sub{
+	border-radius: 15px;
+	width: 150px;
+	height: 30px;
+	border: none;
+	background-color: #BEEFFF;
+	font-size: 15px;
+	padding: 5px;
+	margin: 5px;
+	outline: none;
+	font-family: maple-b;
+	margin-top: 20px;
+}
+
+.phone{
+	width: 27%;
+	text-align: center;
+	font-size: 15px;
+	font-family: maple;
+}
+
+.can{
+	border-radius: 15px;
+	width: 150px;
+	height: 30px;
+	border: none;
+	background-color: #dcdcdc;
+	font-size: 15px;
+	padding: 5px;
+	margin: 5px;
+	outline: none;
+	font-family: maple-b;
+	margin-top: 20px;
+}
+
+.help_form{
+	margin-left: 10%;
+	font-size: 15px;
+	height: 20px;
+	color: red;
+	display: none;
+}

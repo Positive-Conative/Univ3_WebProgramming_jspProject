@@ -14,20 +14,20 @@
     <title>Sign In</title>
 </head>
 <body>
-	<form method="post">
-		<div class="form">
+	<div class="form">
         	<a href="#"><img class="prev" src="./public/images/exit1.png" alt="" onclick="back()"></a><br>
         	<a href="index.jsp"><img class="logo" src="./public/images/logo.PNG"></a><br>
-        	<input class="id" type="text" placeholder="학번" id="num" name="num"><br>
-	        <hr width="250px">
-        	<input class="pw" type="password" placeholder="비밀번호" id="pw" name="pw"><br>
-        	<hr width="250px">
-        	<p align="left"><input type="checkbox" style="margin-left: 60px;"> ID 저장</p>
-        	<input type="submit" class="bt" value="로그인"><br>
-        	<a href="signup.jsp"><button class="bt" onclick="location=signup.jsp">회원가입</button></a><br>
+       		<form method="post">
+        		<input class="id" type="text" placeholder="학번" id="num" name="num"><br>
+	        	<hr width="250px">
+        		<input class="pw" type="password" placeholder="비밀번호" id="pw" name="pw"><br>
+        		<hr width="250px">
+        		<div style="margin: 30px"></div>
+        		<input type="submit" class="bt" value="로그인"><br>
+        	</form>
+        	<a href="./signup.jsp"><button class="bt">회원가입</button></a><br>
 	        <a href=""><div class="mg">비밀번호를 잊으셨나요?</div></a>
     	</div>
-    </form>
 </body>
 
 <%
