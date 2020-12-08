@@ -22,7 +22,7 @@
 		request.getParameter("title")!=null &&
 		request.getParameter("content")!=null){
 		
-		out.println("<script>alert('등록되었습니다."+request.getParameter("accused")+"')</script>");
+		out.println("<script>alert('등록되었습니다.')</script>");
 		serviceCenterDAO.inputReportToDB("NoName",request.getParameter("accused"), request.getParameter("title"), request.getParameter("content"));
 
 	}

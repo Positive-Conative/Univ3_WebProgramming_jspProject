@@ -14,7 +14,7 @@
 		request.getParameter("title")!=null){
 		
 		serviceCenterDAO.inputQnaToDB("NoName",request.getParameter("title"), request.getParameter("content"));
-		out.println("<script>alert('등록되었습니다."+request.getParameter("content")+"'); location.href='qna.jsp?pnum=1'</script>");
+		out.println("<script>alert('등록되었습니다.'); location.href='qna.jsp?pnum=1'</script>");
 	}
 %>
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
