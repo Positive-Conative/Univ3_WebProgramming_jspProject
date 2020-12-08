@@ -7,10 +7,6 @@
 <jsp:useBean id="user_infoDAO" scope="page" class="com.webServer.user_infoDAO"/>
 <!DOCTYPE html>
 
-<%
-	String num = "20161468";
-%>
-
 <html>
 <head>
 <meta charset="UTF-8">
@@ -40,11 +36,24 @@
 										<td width="60%" class="table_border">제목</td>
 										<td width="30%" class="table_border">작성일</td>
 									</thead>
+									<%
+										String db_data = user_infoDAO.get_board("20161468");
+										int i = 0;
+										JSONParser parser = new JSONParser();
+										Object result = parser.parse(db_data);
+										JSONArray resultArr = (JSONArray)result;
+										for(i=0; i<2; i++){
+											try{
+												JSONObject element = (JSONObject)resultArr.get(i);
+												String title = (String)element.get("Title");
+												String date = (String)element.get("Date");							
+									%>
 									<tr>
-										<td class="table_border">1</td>
-										<td class="table_border">샘플</td>
-										<td class="table_border">2020-12-08</td>
+										<td class="table_border"><%= i+1 %></td>
+										<td class="table_border"><%= title %></td>
+										<td class="table_border"><%= date %></td>
 									</tr>
+									<%}catch(Exception e){ continue; }} %>
 								</table>
 							</td>
 							<td class="back_sub">
