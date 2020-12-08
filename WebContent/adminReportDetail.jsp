@@ -8,9 +8,9 @@
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
 <%
 	if(request.getParameter("penalty_rdo")!=null){
-		
 		out.println("<script>alert('적용되었습니다.'); location.href='adminReport.jsp?pnum=1'</script>");
-		admin_DAO.inputUserDB(request.getParameter("accused_id"),Integer.parseInt(request.getParameter("penalty_rdo")));
+		//admin_DAO.inputUserDB("20161472", 14, 1);
+		admin_DAO.inputUserDB(request.getParameter("accused_id"),Integer.parseInt(request.getParameter("penalty_rdo")),Integer.parseInt(request.getParameter("rid")));
 
 	}
 %>
@@ -65,6 +65,7 @@
         <br><br>
         <form id="penalty_form" method=post>
         <input type='hidden' name='accused_id' value='<%=accused_id %>'>
+        <input type='hidden' name='rid' value='<%=rid %>'>
 	        <div style="text-align: right; margin-right:15vw ">
 	        	<div id="penalty_list" style="display:none; ">
 		        	<input type="radio" name="penalty_rdo" value="0"/>무죄 &nbsp;
