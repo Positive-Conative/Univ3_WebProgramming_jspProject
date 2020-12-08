@@ -20,6 +20,7 @@
                 <li>자유게시판</li>
                 <li onclick="location.href='notice.jsp?pnum=1'">고객센터</li>
                 <li onclick="location.href='developerIndex.jsp'">개발자 정보</li>
+                <li style="color:blue" onclick="location.href='adminQna.jsp?pnum=1'">관리자</li>
                 <div class="navRight">
                     <input type="text" placeholder="Search"/>
                     <button class="bt" type="submit" style="width:25px;"><img src="public/images/loupe.png"></button>
