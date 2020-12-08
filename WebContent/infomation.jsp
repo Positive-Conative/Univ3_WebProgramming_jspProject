@@ -8,8 +8,11 @@
 <!DOCTYPE html>
 
 <%
-	String num = "20161468";
-	//String num = user_infoDAO.get_num();
+	JSONObject result = user_infoDAO.get_info();
+	String get_phone = result.get("3").toString();
+	String ph1 = get_phone.substring(0, 3);
+	String ph2 = get_phone.substring(3, 7);
+	String ph3 = get_phone.substring(7, 11);
 %>
 
 <html>
@@ -39,7 +42,7 @@
 								학번
 							</td>
 							<td class="back_sub">
-								<div style="font-size: 20px"><%= num %></div>
+								<div style="font-size: 20px"><%= result.get("1") %></div>
 							</td>
 						</tr>
 						<tr>
@@ -48,7 +51,7 @@
 							</td>
 							<td class="back_sub">
 								<div align="left" class="help_form" id="pw_ch"> </div>
-								<input type="password" class="input_value" id="pw" onblur="passwd_check()" placeholder="비밀번호 (영문자, 숫자 포함 10자리 이상)" name="pw">
+								<input type="password" class="input_value" id="pw" onblur="passwd_check()" placeholder="비밀번호 (영문자, 숫자 포함 10자리 이상)" name="pw"">
 							</td>
 						</tr>
 						<tr>
@@ -65,7 +68,7 @@
 								이름
 							</td>
 							<td class="back_sub">
-								<input type="text" class="input_value" id="name" placeholder="이름" name="name">
+								<input type="text" class="input_value" id="name" placeholder="이름" name="name" value="<%= result.get("2")%>">
 							</td>
 						</tr>
 						<tr>
@@ -75,9 +78,9 @@
 							<td class="back_sub">
 								<div align="left" class="help_form" id="ph_ch"> </div>
 								<div>
-            						<input type="text" class="phone" id="ph1" onblur="ph_check()" name="ph1" maxlength=3> - 
-            						<input type="text" class="phone" id="ph2" onblur="ph_check()" name="ph2" maxlength=4> - 
-            						<input type="text" class="phone" id="ph3" onblur="ph_check()" name="ph3" maxlength=4>
+            						<input type="text" class="phone" id="ph1" onblur="ph_check()" name="ph1" maxlength=3 value="<%= ph1 %>"> - 
+            						<input type="text" class="phone" id="ph2" onblur="ph_check()" name="ph2" maxlength=4 value="<%= ph2 %>"> - 
+            						<input type="text" class="phone" id="ph3" onblur="ph_check()" name="ph3" maxlength=4 value="<%= ph3 %>">
         						</div>
 							</td>
 						</tr>
@@ -86,7 +89,7 @@
 								주소
 							</td>
 							<td class="back_sub">
-								<input type="text" class="input_value" id="address" placeholder="주소" name="address">
+								<input type="text" class="input_value" id="address" placeholder="주소" name="address" value="<%= result.get("4")%>">
 							</td>
 						</tr>
 					</table>
@@ -104,6 +107,41 @@
 
 <script type="text/javascript">
 
+function sub(){
+	if(document.getElementById("pw").value != document.getElementById("pwch").value){
+		alert("비밀번호가 서로 다릅니다.");
+		return false;
+	}
+	else{
+		var num = false;
+	    var eng = false;
+	    var count = false;
+
+	    var pw = document.getElementById("pw").value;
+	    
+	    if(pw.length > 9)
+	        count = true;
+
+	    for(var i = 0; i< pw.length; i++){
+	        var code = pw.charCodeAt(i);
+
+	        if(47 < code && code < 58);
+	            num = true;
+
+	        if((64 < code && code < 91) || (96 < code && code < 123))
+	            eng = true;
+	    }
+
+	    if(num == false || eng == false || count == false){
+	    	alert("비밀번호가 양식에 맞지 않습니다.");
+	    	return false;
+	    }
+	    else{
+	    	return true;
+	    }
+	}
+}
+
 function back(){
     window.history.back();
 }
@@ -116,7 +154,7 @@ request.setCharacterEncoding("UTF-8");
 
 if(request.getParameter("pwch")!=null && request.getParameter("pw")!=null && request.getParameter("name")!=null && request.getParameter("ph1")!=null && request.getParameter("ph2")!=null && request.getParameter("ph3")!=null && request.getParameter("address")!=null){
 	String phone = request.getParameter("ph1") + request.getParameter("ph2") + request.getParameter("ph3");
-	if(user_infoDAO.change_info(num, request.getParameter("pw"), request.getParameter("name"), phone, request.getParameter("address"))){
+	if(user_infoDAO.change_info("20161468", request.getParameter("pw"), request.getParameter("name"), phone, request.getParameter("address"))){
 		
 	}
 }	
