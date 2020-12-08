@@ -3,15 +3,10 @@
 <%@ include file="import/header.jsp" %>
 
 <%
-	session.getAttribute("num");
-
-	String num = (String)session.getAttribute("num");
-
-	if(num == null || num.equals("")){
-		out.println("<script>alert('no session')</script>");
-	}
-	else{
-		out.println("<script>alert('use session')</script>");
+	if((String)session.getAttribute("student_num") == null){
+		out.print("<script>console.log('너는 손놈이다.')</script>");
+	}else{
+		out.print("<script>console.log('너는 : " +(String)session.getAttribute("student_num") + "이다.')</script>");
 	}
 %>
 

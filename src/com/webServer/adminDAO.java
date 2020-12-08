@@ -36,7 +36,7 @@ public class adminDAO {
 		return true;
 	}
 	public String getReport() throws SQLException {
-		ResultSet rs = dm.dbLoad("SELECT * FROM report ORDER BY write_date ASC", null, "select");
+		ResultSet rs = dm.dbLoad("SELECT * FROM report where is_checked=0 ORDER BY write_date ASC ", null, "select");
 		JSONArray result = new JSONArray();
 		while(rs.next()) {
 			JSONObject obj = new JSONObject();
@@ -70,13 +70,15 @@ public class adminDAO {
 		}
 		return result.toString();
 	}
-	public boolean inputUserDB(String id, int penalty) throws SQLException {
+	public boolean inputUserDB(String id, int penalty, int rid) throws SQLException {
         JSONObject parameters = new JSONObject();
         if(penalty>0) {
             parameters.put("1", penalty);
             parameters.put("2", id);
-            System.out.println(penalty+ id);
-            ResultSet rs = dm.dbLoad("UPDATE user_info SET penalty=DATE_ADD(NOW(), INTERVAL ? DAY) WHERE id=?", parameters, "insert");
+            parameters.put("3", rid);
+            //UPDATE user_info ui, report r SET ui.penalty=DATE_ADD(NOW(), INTERVAL 2 DAY), r.is_checked=1 WHERE ui.id="20161472" AND r.accused_id="20161472"
+            ResultSet rs = dm.dbLoad("UPDATE user_info ui, report r SET ui.penalty=DATE_ADD(NOW(), INTERVAL ? DAY), r.is_checked=1 WHERE ui.id=? AND r.rid=?", parameters, "insert");
+            //ResultSet rs = dm.dbLoad("UPDATE user_info SET penalty=DATE_ADD(NOW(), INTERVAL ? DAY) WHERE id=?;UPDATE report SET is_checked=1 WHERE accused_id=?;", parameters, "insert");
         }
 		return true;
 	}

@@ -24,8 +24,23 @@
                 <div class="navRight">
                     <input type="text" placeholder="Search"/>
                     <button class="bt" type="submit" style="width:25px;"><img src="public/images/loupe.png"></button>
-                <a>LOG IN</a>
+					<%
+						if((String)session.getAttribute("student_num") == null){
+							out.print("<div id=\"loginbtn\" onclick=\"location.href='signin.jsp'\">LOG IN</div>");
+						}else{
+							out.print("<div id=\"loginbtn\" onclick=\"location.href='signout.jsp'\">LOG OUT</div>");
+						}
+					%>
                 </div>
             </nav>
         </header>
         
+        <style>
+        	#loginbtn{
+        		display:inline-block;
+        		cursor:pointer;
+        	}
+        	#loginbtn:hover{
+        		color:red;
+        	}
+        </style>

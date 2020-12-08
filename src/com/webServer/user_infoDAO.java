@@ -52,12 +52,12 @@ public class user_infoDAO {
 		return result;
 	}
 	
-	public boolean signin(String id, String pw) throws SQLException{
+	public int signin(String id, String pw) throws SQLException{
 		JSONObject parameters = new JSONObject();
 		
 		String get_id = null;
 		String get_pw = null;
-		
+		String get_pvalue = null;
 		parameters.put("1", id);
 		ResultSet rs = dm.dbLoad("SELECT * FROM user_info WHERE id=?", parameters, "select");
 		
@@ -68,11 +68,18 @@ public class user_infoDAO {
 		
 		if(get_id.equals(id) && get_pw.equals(pw))
 		{
-			return true;
+			rs = dm.dbLoad("SELECT DATEDIFF((SELECT penalty FROM user_info WHERE id=?), NOW()) AS pvalue;", parameters, "select");
+			while(rs.next()) {
+				get_pvalue = rs.getString("pvalue");
+			}
+			if(Integer.parseInt(get_pvalue)>0) {
+				return -1;
+			}
+			return 1;
 		}
 		else
 		{
-			return false;
+			return 0;
 		}
 	}
 	

@@ -24,6 +24,7 @@ public class DatabaseManager {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPW);
+			System.out.println(sql);
 			pstmt = conn.prepareStatement(sql);
 			if(parameters != null) {
 //				System.out.println("asdf : " + parameters.keySet());
