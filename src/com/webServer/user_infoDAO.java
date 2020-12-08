@@ -9,37 +9,34 @@ import java.sql.SQLException;
 import org.apache.tomcat.dbcp.dbcp2.SQLExceptionList;
 import org.json.simple.JSONArray;
 
-import java.io.UnsupportedEncodingException;
-import java.security.GeneralSecurityException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import org.apache.commons.codec.binary.Base64;
-
 public class user_infoDAO {
 	DatabaseManager dm = new DatabaseManager();
 	
-	public static String encrypt(String str) {
-        byte[] crypted = null;
-        String key = "webprogramming";
-        String iv = key.substring(0, 16);
-        try {
- 
-            SecretKeySpec skey = new SecretKeySpec(key.getBytes(), "AES");
- 
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, skey, new IvParameterSpec(iv.getBytes()));
-            crypted = cipher.doFinal(str.getBytes("UTF-8"));
-        } catch(Exception e) {
-            System.out.println(e.toString());
-        }
- 
-        String enStr = new String(Base64.encodeBase64(crypted));
- 
-        return enStr;
-    }
+	public boolean change_info(String num, String pw, String name, String phone, String address) throws SQLException{
+		JSONObject parameters = new JSONObject();
+		
+        parameters.put("1", pw);
+        parameters.put("2", name);
+        parameters.put("3", phone);
+        parameters.put("4", address);
+        parameters.put("5", num);
+        
+        ResultSet rs = dm.dbLoad("UPDATE user_info Set pw=?, name=?, phone=?, address=? WHERE id=?", parameters, "insert");
+		
+		return true;
+	}
+	
+	public String get_num() throws SQLException{ // 세션에서 num 받아오게 설정하기
+		String num = "20161468";
+		JSONObject parameters = new JSONObject();
+		String get_id = null;
+		parameters.put("1", num);
+		ResultSet rs = dm.dbLoad("SELECT * FROM user_info WHERE id=?", parameters, "select");
+		while(rs.next()) {
+			get_id = rs.getString("id");
+		}
+		return get_id;
+	}
 	
 	public boolean signin(String id, String pw) throws SQLException{
 		JSONObject parameters = new JSONObject();
@@ -73,9 +70,8 @@ public class user_infoDAO {
         parameters.put("3", salt);
         parameters.put("4", name);
         parameters.put("5", phone);
-        parameters.put("6", address);
 		
-        ResultSet rs = dm.dbLoad("INSERT INTO user_info(id, pw, salt, name, phone, adress) values(?, ?, ?, ?, ?, ?)", parameters, "insert");
+        ResultSet rs = dm.dbLoad("INSERT INTO user_info(id, pw, salt, name, phone) values(?, ?, ?, ?, ?)", parameters, "insert");
         
 		return true;
 	}
