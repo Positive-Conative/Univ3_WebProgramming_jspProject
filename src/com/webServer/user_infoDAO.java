@@ -10,8 +10,48 @@ import java.text.SimpleDateFormat;
 import org.apache.tomcat.dbcp.dbcp2.SQLExceptionList;
 import org.json.simple.JSONArray;
 
+import java.security.MessageDigest;
+
 public class user_infoDAO {
 	DatabaseManager dm = new DatabaseManager();
+	
+	public static String encrypt(String planText) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-512");
+			md.update(planText.getBytes());
+			byte byteData[] = md.digest();
+			StringBuffer sb = new StringBuffer();
+			for (int i = 0; i < byteData.length; i++) {
+				sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+			}
+			StringBuffer hexString = new StringBuffer();
+			for (int i = 0; i < byteData.length; i++) {
+				String hex = Integer.toHexString(0xff & byteData[i]);
+				if (hex.length() == 1) {
+					hexString.append('0');
+				}
+				hexString.append(hex);
+			}
+			return hexString.toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+	}
+	
+	public String get_authority(String num) throws SQLException{
+		
+		JSONObject parameters = new JSONObject();
+		
+		String get_authority = null;
+		parameters.put("1", num);
+		ResultSet rs = dm.dbLoad("SELECT authority FROM user_info WHERE id=?", parameters, "select");
+		while(rs.next()) {
+			get_authority = rs.getString("authority");
+		}
+		
+		return get_authority;
+	}
 	
 	public boolean change_info(String num, String pw, String name, String phone, String address) throws SQLException{
 		JSONObject parameters = new JSONObject();
@@ -27,8 +67,7 @@ public class user_infoDAO {
 		return true;
 	}
 	
-	public JSONObject get_info() throws SQLException{ // 세션에서 num 받아오게 설정하기
-		String num = "20161468";
+	public JSONObject get_info(String num) throws SQLException{ // 세션에서 num 받아오게 설정하기
 		JSONObject parameters = new JSONObject();
 		String get_id = null;
 		String get_name = null;
@@ -101,10 +140,11 @@ public class user_infoDAO {
 		JSONObject parameters = new JSONObject();
 		parameters.put("1", id);
 		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-		ResultSet rs = dm.dbLoad("SELECT Title, Date FROM board WHERE Writer=? ORDER BY Num DESC;", parameters, "select");
+		ResultSet rs = dm.dbLoad("SELECT Num, Title, Date FROM board WHERE Writer=? ORDER BY Date DESC;", parameters, "select");
 		JSONArray result = new JSONArray();
 		while(rs.next()) {
 			JSONObject obj = new JSONObject();
+			obj.put("Num", rs.getString("Num"));
 			obj.put("Title", rs.getString("Title"));
 			obj.put("Date", fm.format(rs.getObject("Date")));
 			result.add(obj);
@@ -117,14 +157,16 @@ public class user_infoDAO {
 		JSONObject parameters = new JSONObject();
 		parameters.put("1", id);
 		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
-		ResultSet rs = dm.dbLoad("SELECT Title, Date FROM market WHERE Writer=? ORDER BY Num DESC;", parameters, "select");
+		ResultSet rs = dm.dbLoad("SELECT mid, Title, Date FROM market WHERE Writer=? ORDER BY Date DESC;", parameters, "select");
 		JSONArray result = new JSONArray();
 		while(rs.next()) {
 			JSONObject obj = new JSONObject();
+			obj.put("mid", rs.getString("mid"));
 			obj.put("Title", rs.getString("Title"));
 			obj.put("Date", fm.format(rs.getObject("Date")));
 			result.add(obj);
 		}
+		System.out.println(result);
 		return result.toString();
 	}
 }

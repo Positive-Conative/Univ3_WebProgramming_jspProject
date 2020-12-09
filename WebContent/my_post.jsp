@@ -4,7 +4,6 @@
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
-<jsp:useBean id="user_infoDAO" scope="page" class="com.webServer.user_infoDAO"/>
 <!DOCTYPE html>
 
 <html>
@@ -29,6 +28,35 @@
 					<table width="100%">
 						<tr>
 							<td class="front_sub">
+								<div style="font-size: 20px; margin-bottom: 15px;">자유게시판</div>
+								<table width="100%" style="border-collapse: collapse; border-spacing: 0">
+									<thead>
+										<td width="10%" class="table_border">번호</td>
+										<td width="60%" class="table_border">제목</td>
+										<td width="30%" class="table_border">작성일</td>
+									</thead>
+									<%
+										String b_db_data = user_infoDAO.get_board((String)session.getAttribute("student_num"));
+										int b_i = 0;
+										JSONParser parser = new JSONParser();
+										Object b_result = parser.parse(b_db_data);
+										JSONArray b_resultArr = (JSONArray)b_result;
+										for(b_i=0; b_i<b_db_data.length(); b_i++){
+											try{
+												JSONObject element = (JSONObject)b_resultArr.get(b_i);
+												String Num = (String)element.get("Num");
+												String title = (String)element.get("Title");
+												String date = (String)element.get("Date");							
+									%>
+									<tr onclick="location.href='./freedetail.jsp?Num=<%= Num%>'">
+										<td class="table_border"><%= b_i+1 %></td>
+										<td class="table_border"><%= title %></td>
+										<td class="table_border"><%= date %></td>
+									</tr>
+									<%}catch(Exception e){ continue; }} %>
+								</table>
+							</td>
+							<td class="back_sub">
 								<div style="font-size: 20px; margin-bottom: 15px;">거래게시판</div>
 								<table width="100%" style="border-collapse: collapse; border-spacing: 0">
 									<thead>
@@ -37,43 +65,24 @@
 										<td width="30%" class="table_border">작성일</td>
 									</thead>
 									<%
-										String db_data = user_infoDAO.get_board("20161468");
-										int i = 0;
-										JSONParser parser = new JSONParser();
-										Object result = parser.parse(db_data);
-										JSONArray resultArr = (JSONArray)result;
-										for(i=0; i<2; i++){
+										String m_db_data = user_infoDAO.get_market((String)session.getAttribute("student_num"));
+										int m_i = 0;
+										JSONParser m_parser = new JSONParser();
+										Object m_result = parser.parse(m_db_data);
+										JSONArray m_resultArr = (JSONArray)m_result;
+										for(m_i=0; m_i<m_db_data.length(); m_i++){
 											try{
-												JSONObject element = (JSONObject)resultArr.get(i);
+												JSONObject element = (JSONObject)m_resultArr.get(m_i);
+												String mid = (String)element.get("mid");
 												String title = (String)element.get("Title");
 												String date = (String)element.get("Date");							
 									%>
-									<tr>
-										<td class="table_border"><%= i+1 %></td>
+									<tr onclick="location.href='./marketDetail.jsp?mid=<%= mid%>'">
+										<td class="table_border"><%= m_i+1 %></td>
 										<td class="table_border"><%= title %></td>
 										<td class="table_border"><%= date %></td>
 									</tr>
 									<%}catch(Exception e){ continue; }} %>
-								</table>
-							</td>
-							<td class="back_sub">
-								<div style="font-size: 20px; margin-bottom: 15px;">자유게시판</div>
-								<table width="100%" style="border-collapse: collapse; border-spacing: 0">
-									<thead>
-										<td width="10%" class="table_border">번호</td>
-										<td width="60%" class="table_border">제목</td>
-										<td width="30%" class="table_border">작성일</td>
-									</thead>
-									<tr>
-										<td class="table_border">1</td>
-										<td class="table_border">샘플</td>
-										<td class="table_border">2020-12-08</td>
-									</tr>
-									<tr>
-										<td class="table_border">2</td>
-										<td class="table_border">샘플</td>
-										<td class="table_border">2020-12-08</td>
-									</tr>
 								</table>
 							</td>
 						</tr>

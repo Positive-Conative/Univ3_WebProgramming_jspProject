@@ -4,11 +4,13 @@
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
-<jsp:useBean id="user_infoDAO" scope="page" class="com.webServer.user_infoDAO"/>
 <!DOCTYPE html>
 
 <%
-	JSONObject result = user_infoDAO.get_info();
+	if((String)session.getAttribute("student_num") == null){
+		response.sendRedirect("index.jsp");
+	}
+	JSONObject result = user_infoDAO.get_info((String)session.getAttribute("student_num"));
 	String get_phone = result.get("3").toString();
 	String ph1 = get_phone.substring(0, 3);
 	String ph2 = get_phone.substring(3, 7);
@@ -154,7 +156,7 @@ request.setCharacterEncoding("UTF-8");
 
 if(request.getParameter("pwch")!=null && request.getParameter("pw")!=null && request.getParameter("name")!=null && request.getParameter("ph1")!=null && request.getParameter("ph2")!=null && request.getParameter("ph3")!=null && request.getParameter("address")!=null){
 	String phone = request.getParameter("ph1") + request.getParameter("ph2") + request.getParameter("ph3");
-	if(user_infoDAO.change_info("20161468", request.getParameter("pw"), request.getParameter("name"), phone, request.getParameter("address"))){
+	if(user_infoDAO.change_info((String)session.getAttribute("student_num"), request.getParameter("pw"), request.getParameter("name"), phone, request.getParameter("address"))){
 		
 	}
 }	
