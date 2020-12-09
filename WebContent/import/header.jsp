@@ -47,24 +47,31 @@
             <div id="hbg_menubar">
                 <div id="mark_X" onclick="closeMenu()">x</div>
                 <table id="menubar_table">
-                    <tr>
+                    <tr onclick="location.href='marketboard.jsp?pnum=1'">
                         <td>거래게시판</td>
                     </tr>
-                    <tr>
+                    <tr onclick="location.href='freeboard.jsp?pnum=1'">
                         <td>자유게시판</td>
                     </tr>
-                    <tr>
+                    <tr onclick="location.href='notice.jsp?pnum=1'">
                         <td>고객센터</td>
                     </tr>
-                    <tr>
+                    <tr onclick="location.href='developerIndex.jsp'">
                         <td>개발자 정보</td>
                     </tr>
-                    <tr>
+                    <tr onclick="location.href='adminQna.jsp?pnum=1'">
                         <td>관리자</td>
                     </tr>
-                    <tr>
-                        <td>로그인</td>
-                    </tr>
+                    <%
+						if((String)session.getAttribute("student_num") == null){
+							out.print("<tr><td onclick=\"location.href='signin.jsp'\">LOG IN</td></tr>");
+						}else{
+							if(!authority.equals("1"))
+								out.print("<tr onclick=\"location.href='infomation.jsp'\"><td>내 정보</td></tr>");
+								out.print("<tr onclick=\"location.href='signout.jsp'\"><td>LOG OUT</td></tr>");
+							
+						}
+					%>
                 </table>
                 <div id="menubar_footer"><div>Hoseo World</div></div>
             </div>
