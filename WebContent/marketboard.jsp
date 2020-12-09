@@ -46,21 +46,18 @@
             </div>
             <%}catch(Exception e){ continue; }}%>
         </div>
-       	
-
-            
             
       </div><br>
       <div align="center">
-                            	<%if(pnum>1){%>
-                            		<input type="button" class="bt-toolbar" value="&lt; Priv" onclick="location.href='marketboard.jsp?pnum=<%= pnum-1%>'"/>
-                            	<%} %>
-                            	<% for(int i=1; i<(resultArr.size()/MAX_LIST_SIZE)+2; i++){%>
-                            		<input type="button" class="bt-toolbar" value="<%= i%>" onclick="location.href='marketboard.jsp?pnum=<%= i%>'"/>
-                            	<%}%>
-                            	<%if(pnum != (resultArr.size()/MAX_LIST_SIZE)+1){%>
-                            		<input type="button" class="bt-toolbar" value="Next &gt;" onclick="location.href='marketboard.jsp?pnum=<%= pnum+1%>'"/>
-                            	<%} %>
+         	<%if(pnum>1){%>
+         		<input type="button" class="bt-toolbar" value="&lt; Priv" onclick="location.href='marketboard.jsp?pnum=<%= pnum-1%>'"/>
+         	<%} %>
+         	<% for(int i=1; i<(resultArr.size()/MAX_LIST_SIZE)+2; i++){%>
+         		<input type="button" class="bt-toolbar" value="<%= i%>" onclick="location.href='marketboard.jsp?pnum=<%= i%>'"/>
+         	<%}%>
+         	<%if(pnum != (resultArr.size()/MAX_LIST_SIZE)+2){%>
+         		<input type="button" class="bt-toolbar" value="Next &gt;" onclick="location.href='marketboard.jsp?pnum=<%= pnum+1%>'"/>
+         	<%} %>
                             	
          </div><br><br><br>
             <div style="text-align: center;  ">

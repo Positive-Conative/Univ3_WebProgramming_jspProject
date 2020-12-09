@@ -24,6 +24,17 @@
     table-layout: fixed;
     width:100%;
 }
+.content table tbody tr td:nth-child(2){
+	width:200px;
+	padding:20px;
+}
+.content table tbody img{
+	width:150px;
+	height:150px;
+}
+.content tbody tr{
+	height:170px;
+}
 /* #navi{ border:1px solid black; } */
 .content #navi li{
     list-style:none;
