@@ -62,7 +62,14 @@
          </div><br><br><br>
             <div style="text-align: center;  ">
  
-                    <input type="button" class="bt" value="글 작성하기" onclick="location.href='marketBoardWrite.jsp'"/>
+                   <%
+						if((String)session.getAttribute("student_num") == null){
+				
+						}
+						else{
+							out.print("<input type=\"button\" class=\"bt\" value=\"글 작성하기\" onclick=\"location.href='marketBoardWrite.jsp'\"/>");				
+						}
+					%>
                           
             </div>
     </section>

@@ -70,3 +70,5 @@
             <input type="button" class="bt" value="뒤로가기" onclick="history.back()"/>
         </div>
     </section>
+    
+    <%@ include file="import/footer.jsp" %>

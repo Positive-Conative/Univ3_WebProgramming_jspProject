@@ -8,12 +8,21 @@
 <%@include file="import/header.jsp" %>
 
 <%
-	if(	request.getParameter("Writer")!=null &&
-		request.getParameter("Title")!=null && 
+
+	if((String)session.getAttribute("student_num") == null){
+		out.print("<script>alert('로그인 후 이용할 수 있는 기능입니다.');</script>");
+		out.print("<script>window.history.back()</script>");
+	}
+	else{
+		String user_id = (String)session.getAttribute("student_num");
+%>
+
+<%
+	if(	request.getParameter("Title")!=null && 
 		request.getParameter("Content")!=null){
 		
 		out.println("<script>alert('등록되었습니다.'); location.href='freeboard.jsp?pnum=1'</script>");
-		freeBoard_DAO.inputboardToDB(request.getParameter("Writer"),request.getParameter("Title"), request.getParameter("Content"), "File");
+		freeBoard_DAO.inputboardToDB(user_id,request.getParameter("Title"), request.getParameter("Content"), "File");
 
 	}
 %>
@@ -41,7 +50,7 @@
                                 	<tr>
                                        <th>작성자 ID</th>
                                        <td colspan="3">
-                                            <input type="text" name="Writer" style="width:90%" placeholder="본인의 ID를 작성해주세요"/>
+                                             <div style="text-align: left; margin-left: 5%"><%= user_id %></div>
                                        </td>
                                     </tr>
                                     <tr>
@@ -68,5 +77,6 @@
         </table>
         </form>
     </section>
-    
+	<% } %>
+    <%@ include file="import/footer.jsp" %>
   

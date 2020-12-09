@@ -56,6 +56,8 @@ public class user_infoDAO {
 	public boolean change_info(String num, String pw, String name, String phone, String address) throws SQLException{
 		JSONObject parameters = new JSONObject();
 		
+		//pw = encrypt(pw);
+		
         parameters.put("1", pw);
         parameters.put("2", name);
         parameters.put("3", phone);
@@ -97,6 +99,9 @@ public class user_infoDAO {
 		String get_id = null;
 		String get_pw = null;
 		String get_pvalue = null;
+		
+		//pw = encrypt(pw);
+		
 		parameters.put("1", id);
 		ResultSet rs = dm.dbLoad("SELECT * FROM user_info WHERE id=?", parameters, "select");
 		
@@ -122,18 +127,46 @@ public class user_infoDAO {
 		}
 	}
 	
-	public boolean signup(String id, String pw, String salt, String name, String phone, String address) throws SQLException{
+	public int signup(String id, String pw, String name, String phone) throws SQLException{
+		JSONObject parameters_s = new JSONObject();
+		
 		JSONObject parameters = new JSONObject();
 		
-		parameters.put("1", id);
-        parameters.put("2", pw);
-        parameters.put("3", salt);
-        parameters.put("4", name);
-        parameters.put("5", phone);
+		System.out.println(id);
+		System.out.println(pw);
+		System.out.println(name);
+		System.out.println(phone);
 		
-        ResultSet rs = dm.dbLoad("INSERT INTO user_info(id, pw, salt, name, phone) values(?, ?, ?, ?, ?)", parameters, "insert");
+		pw = encrypt(pw);
+		
+		parameters_s.put("1", id);
+
+		parameters.put("1", id);
+    	parameters.put("2", pw);
+        parameters.put("3", name);
+        parameters.put("4", phone);
+		
+        String exist = null;
         
-		return true;
+        ResultSet rs = dm.dbLoad("SELECT EXISTS(SELECT id FROM user_info WHERE id=?) AS isChk", parameters, "select");
+        
+        while(rs.next())
+        {
+        	exist = rs.getString("id");
+        }
+        
+        if(exist.equals("1")){
+        	return 2;
+        }
+        else if(exist.equals("0")){
+        	
+        	rs = dm.dbLoad("INSERT INTO user_info VALUES(?, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT)", parameters, "insert");
+        	
+        	return 1;
+        }
+        else {
+        	return 0;
+        }
 	}
 	
 	public String get_board(String id) throws SQLException{

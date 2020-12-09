@@ -79,5 +79,7 @@
             </tbody>
         </table>
     </section>
+    
+    <%@ include file="import/footer.jsp" %>
     <style>
     </style>

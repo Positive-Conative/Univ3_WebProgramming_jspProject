@@ -5,6 +5,7 @@
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="user_infoDAO" scope="page" class="com.webServer.user_infoDAO"/>
 <!DOCTYPE html>
+<html>
 <head>
     <link rel="stylesheet" type="text/css" href="./public/stylesheets/signup.css">
 	<script src='https://www.google.com/recaptcha/api.js'></script>
@@ -18,13 +19,13 @@
         <a href="#" onclick="show()"><div align=left class="check"><input type="checkbox" style="width: 15px; height: 15px; margin-top: 5px;" id=agree><span style="margin-bottom: 5px;"><span style="font-size: 20px;">개인정보 수집 및 이용 동의</span></div></a>
         <div class="r"></div>
 
-		<form method="post">
+		<form method="POST">
         	<div align=left class="label">학번<span class="help_form" id="num_ch"></span></div>
         	<input type="text" class="input_value" id="num" placeholder="학번" onblur="num_check()" name="num">
         	<div align=left class="label">비밀번호<span class="help_form" id="pw_ch"></span></div>
         	<input type="password" class="input_value" id="pw" onblur="passwd_check()" placeholder="비밀번호 (영문자, 숫자 포함 10자리 이상)" name="pw">
         	<div align=left class="label">비밀번호 확인<span class="help_form" id="pwch_ch"></span></div>
-        	<input type="password" class="input_value" id="pwch" onblur="equals()" placeholder="비밀번호 확인">
+        	<input type="password" class="input_value" id="pwch" onblur="equals()" placeholder="비밀번호 확인" name="pwch">
         	<div align=left class="label">이름</div>
         	<input type="text" class="input_value" id="name" placeholder="이름" name="name">
         	<div align=left class="label">휴대폰 번호<span class="help_form" id="ph_ch"></span></div>
@@ -37,8 +38,7 @@
         	<div align=center style="margin-top: 20px">
 			    <div class="g-recaptcha" data-sitekey="6LeolOMZAAAAAPVRPOOcJCOk1iiNOcNO5P2_djl7"></div>
     		</div>
-        
-        	<button class="can" onclick="re_check()">이전</button>
+    		
         	<input class="sub" type="submit" value="다음">
         </form>
     </div>
@@ -68,6 +68,27 @@
         </div>
     </div>
 </body>
+</html>
+
+<%
+request.setCharacterEncoding("UTF-8");
+
+if(request.getParameter("num")!=null && request.getParameter("pw")!=null && request.getParameter("pwch")!=null && request.getParameter("name")!=null && request.getParameter("ph1")!=null && request.getParameter("ph2")!=null && request.getParameter("ph3")!=null){
+	String phone = request.getParameter("ph1") + request.getParameter("ph2") + request.getParameter("ph3");
+	int result = user_infoDAO.signup(request.getParameter("num"), request.getParameter("pw"), request.getParameter("name"), phone);
+	if(result == 2){
+		out.println("<script> alert('해당 학번은 이미 가입되어 있습니다.')</script>");
+		response.sendRedirect("signup.jsp");
+	}
+	else if(result == 1){
+		out.println("<script> alert('회원가입 되었습니다.')</script>");
+		response.sendRedirect("signin.jsp");
+	}
+	else{
+		out.println("<script> alert('에러당')</script>");
+	}
+}
+%>
 
 <script type="text/javascript">
 

@@ -10,6 +10,16 @@
 <jsp:setProperty name="report_DO" property="*"/>
 
 <%
+
+	if((String)session.getAttribute("student_num") == null){
+		out.print("<script>alert('로그인 후 이용할 수 있는 기능입니다.');</script>");
+		out.print("<script>window.history.back()</script>");
+	}
+	else{
+		
+%>
+
+<%
 	if( request.getParameter("content")!=null &&
 		request.getParameter("title")!=null){
 		
@@ -72,3 +82,8 @@
     
     <script>
     </script>
+<% 
+	}
+%>
+
+<%@ include file="import/footer.jsp" %>
