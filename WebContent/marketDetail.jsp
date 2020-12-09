@@ -82,7 +82,7 @@
       		<table>
       		  <tbody>
       			 <tr>
-      			 	<textarea cols="10" name="Comments" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea><br>
+      			 	<textarea cols="10" name="M_Comments" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea><br>
       			 </tr>	
       				</tbody>	    
       			</table>

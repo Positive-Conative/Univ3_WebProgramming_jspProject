@@ -56,7 +56,7 @@ public class user_infoDAO {
 	public boolean change_info(String num, String pw, String name, String phone, String address) throws SQLException{
 		JSONObject parameters = new JSONObject();
 		
-		//pw = encrypt(pw);
+		pw = encrypt(pw);
 		
         parameters.put("1", pw);
         parameters.put("2", name);
@@ -95,15 +95,28 @@ public class user_infoDAO {
 	
 	public int signin(String id, String pw) throws SQLException{
 		JSONObject parameters = new JSONObject();
-		
+
 		String get_id = null;
 		String get_pw = null;
 		String get_pvalue = null;
 		
-		//pw = encrypt(pw);
+		pw = encrypt(pw);
+		
+		String exist = null;
 		
 		parameters.put("1", id);
-		ResultSet rs = dm.dbLoad("SELECT * FROM user_info WHERE id=?", parameters, "select");
+        
+        ResultSet rs = dm.dbLoad("SELECT EXISTS(SELECT * FROM user_info WHERE id=?) AS isChk", parameters, "select");
+		
+        while(rs.next())
+        {
+        	exist = rs.getString("isChk");
+        }
+        
+        if(exist.equals("0"))
+        	return 0;
+        
+		rs = dm.dbLoad("SELECT * FROM user_info WHERE id=?", parameters, "select");
 		
 		while(rs.next()) {
 			get_id = rs.getString("id");
@@ -132,11 +145,6 @@ public class user_infoDAO {
 		
 		JSONObject parameters = new JSONObject();
 		
-		System.out.println(id);
-		System.out.println(pw);
-		System.out.println(name);
-		System.out.println(phone);
-		
 		pw = encrypt(pw);
 		
 		parameters_s.put("1", id);
@@ -148,11 +156,11 @@ public class user_infoDAO {
 		
         String exist = null;
         
-        ResultSet rs = dm.dbLoad("SELECT EXISTS(SELECT id FROM user_info WHERE id=?) AS isChk", parameters, "select");
+        ResultSet rs = dm.dbLoad("SELECT EXISTS(SELECT * FROM user_info WHERE id=?) AS isChk", parameters_s, "select");
         
         while(rs.next())
         {
-        	exist = rs.getString("id");
+        	exist = rs.getString("isChk");
         }
         
         if(exist.equals("1")){

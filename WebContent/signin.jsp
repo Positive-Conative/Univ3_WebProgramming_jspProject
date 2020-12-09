@@ -42,7 +42,7 @@ if(request.getParameter("num")!=null && request.getParameter("pw")!=null){
 		response.sendRedirect("index.jsp");
 	}
 	else if(login_value == -1){
-		out.println("<script> alert('해당 ID는 현재 정지 상태입니다')</script>");
+		out.println("<script>alert('해당 ID는 현재 정지 상태입니다')</script>");
 	}
 	else{
 		out.println("<script>alert('Fail')</script>");
