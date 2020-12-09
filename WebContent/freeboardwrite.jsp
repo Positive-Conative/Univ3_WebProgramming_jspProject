@@ -18,12 +18,12 @@
 	}
 %>
 
-<link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
+<link href="public/stylesheets/board.css" rel="stylesheet"/>
     <section class="SCcontent">
         <div class="imgarea">
             <img src="public/images/mainimg1.jpg">
             <div class="img_text">
-                <h1>게시글 작성</h1>s
+                <h1>게시글 작성</h1>
                 	자유로운 게시글을 작성해주세요
             </div>
         </div>

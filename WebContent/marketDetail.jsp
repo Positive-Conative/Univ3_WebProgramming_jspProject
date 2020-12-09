@@ -5,7 +5,16 @@
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="marketBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
-<link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
+<link href="public/stylesheets/board.css" rel="stylesheet"/>
+<%
+	if(	request.getParameter("M_Comment")!=null 
+		){
+		String NumVal=request.getParameter("mid");
+		out.println("<script>alert('등록되었습니다.');location.href='marketDetail.jsp?"+NumVal+"</script>");
+		marketBoard_DAO.inputcommentToDB(request.getParameter("M_Writer"),request.getParameter("mid"),request.getParameter("M_Comment"));
+
+	}
+%>
 <section class="SCcontent">
         <div class="imgarea">
             <img src="public/images/mainimg1.jpg">
@@ -57,11 +66,47 @@
             </tbody>
         </table>
         <br><br><br><br>
+      	<form method="post">
+      	<input type="hidden" name="M_Writer" value="김동헌"/>
       	<div align=center>
-      		<h3>댓 글 작 성</h3>
-      			<textarea cols="10" name="comment" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea>
+      		<h3>댓 글 작 성</h3> 
+      		<table>
+      		  <tbody>
+      			 <tr>
+      			 	<textarea cols="10" name="M_Comment" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea><br>
+      			 </tr>	
+      				</tbody>	    
+      			</table>
+      		<input id="submitBtn" type="submit" class="bt" value="등록"/>		   		
 		</div>
-       
+      	</form><br><br>
+       	<table align=center class="commentDetail">
+      		<tbody>
+                <%
+					String comment_data = marketBoard_DAO.getOneCommentResults(request.getParameter("mid"));
+					JSONParser parser1 = new JSONParser();
+					Object result1 = parser1.parse(comment_data);
+					JSONArray resultArr1 = (JSONArray)result1;
+					
+					//out.print(b);
+					//out.print(resultArr.size());
+					
+					for(int i=0; i<resultArr1.size(); i++){
+						try{
+							JSONObject element1 = (JSONObject)resultArr1.get(i);
+							String m_cid= (String)element1.get("m_cid");
+							String M_Writer = (String)element1.get("M_Writer");			
+							String M_Comment = (String)element1.get("M_Comment");
+							String M_Date = (String)element1.get("M_Date");
+				%>
+				<tr >
+                             <td><%= M_Writer %></td>
+                             <td><%= M_Comment %></td>
+                             <td><%= M_Date %></td>
+                      </tr>
+				<%}catch(Exception e){ continue; }}%>
+      		</tbody>
+      	</table>
         <br>
         <div style="text-align: right; margin-right:15vw ">
             <input type="button" class="bt" value="뒤로가기" onclick="history.back()"/>

@@ -72,4 +72,48 @@ public String getOneMarketResults(String mid) throws SQLException {
 	}
 	return result.toString();
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////
+public String getCommentResult() throws SQLException {
+	ResultSet rs = dm.dbLoad("SELECT * FROM marketcomment", null, "select");
+	JSONArray result2 = new JSONArray();
+	while(rs.next()) {
+		JSONObject obj = new JSONObject();
+		obj.put("m_cid", rs.getString("m_cid"));
+		obj.put("M_Writer", rs.getString("M_Writer"));
+		obj.put("M_Comment", rs.getString("M_Comment"));
+		result2.add(obj);
+	}
+	return result2.toString();
+}
+public String getOneCommentResults(String mid) throws SQLException {
+    JSONObject parameters = new JSONObject();
+
+    parameters.put("1", mid);
+	ResultSet rs = dm.dbLoad("SELECT * FROM marketcomment WHERE m_board_num=?", parameters, "select");
+	SimpleDateFormat fm = new SimpleDateFormat("yy/MM/dd hh:MM");
+
+	JSONArray result2 = new JSONArray();
+	while(rs.next()) {
+		System.out.println( fm.format(rs.getObject("M_Date")));
+		JSONObject obj = new JSONObject();
+		obj.put("m_cid", rs.getString("m_cid"));
+		obj.put("M_Writer", rs.getString("M_Writer"));
+		obj.put("M_Comment", rs.getString("M_Comment"));
+		obj.put("M_Date", fm.format(rs.getObject("M_Date")));
+		result2.add(obj);
+	}
+	return result2.toString();
+}
+public boolean inputcommentToDB(String M_Writer,String bn, String M_Comment) throws SQLException {
+    JSONObject parameters = new JSONObject();
+    parameters.put("1", M_Writer);
+    parameters.put("2", bn);
+    parameters.put("3", M_Comment);
+    
+	ResultSet rs = dm.dbLoad("INSERT INTO marketcomment(M_Writer, m_board_num, M_Comment, M_Date) values(?,?, ?, now())", parameters, "insert");
+	
+
+	return true;
+	
+}
 }

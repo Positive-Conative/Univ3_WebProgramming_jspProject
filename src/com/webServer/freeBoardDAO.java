@@ -78,31 +78,35 @@ public class freeBoardDAO {
 		}
 		return result2.toString();
 	}
-	public String getOneCommentResults(String board_num) throws SQLException {
+	public String getOneCommentResults(String Num) throws SQLException {
         JSONObject parameters = new JSONObject();
 
-        parameters.put("1", board_num);
+        parameters.put("1", Num);
 		ResultSet rs = dm.dbLoad("SELECT * FROM comment WHERE board_num=?", parameters, "select");
-        
+		SimpleDateFormat fm = new SimpleDateFormat("yy/MM/dd hh:MM");
+
 		JSONArray result2 = new JSONArray();
 		while(rs.next()) {
+			System.out.println( fm.format(rs.getObject("C_DATE")));
 			JSONObject obj = new JSONObject();
 			obj.put("cid", rs.getString("cid"));
 			obj.put("C_Writer", rs.getString("C_Writer"));
 			obj.put("Comment", rs.getString("Comment"));
-			
+			obj.put("C_DATE", fm.format(rs.getObject("C_DATE")));
 			result2.add(obj);
 		}
 		return result2.toString();
 }
-	public boolean inputcommentToDB(String C_Writer, String Comment) throws SQLException {
+	public boolean inputcommentToDB(String C_Writer,String bn, String Comment) throws SQLException {
         JSONObject parameters = new JSONObject();
         parameters.put("1", C_Writer);
-        parameters.put("2", Comment);
-    
+        parameters.put("2", bn);
+        parameters.put("3", Comment);
         
-		ResultSet rs = dm.dbLoad("INSERT INTO comment(C_Writer,Comment) values(?,?)", parameters, "insert");
+		ResultSet rs = dm.dbLoad("INSERT INTO comment(C_Writer, board_num, Comment, C_Date) values(?,?, ?, now())", parameters, "insert");
+		
 
 		return true;
+		
 	}
 }

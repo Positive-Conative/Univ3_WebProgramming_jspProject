@@ -6,7 +6,7 @@
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="board_DAO" scope="page" class="com.webServer.freeBoardDAO"/>
 
-<link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
+<link href="public/stylesheets/board.css" rel="stylesheet"/>
     <section class="SCcontent">
         <div class="imgarea">
             <img src="public/images/mainimg1.jpg">
