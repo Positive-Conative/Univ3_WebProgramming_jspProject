@@ -35,16 +35,16 @@
 	                    <input type="hidden" name="pnum" value="1"/>
 	                    <input type="text" name="search" placeholder="Search"/>
 	                    <button class="bt" type="submit" style="width:25px;"><img src="public/images/loupe.png"></button>
+						<%
+							if((String)session.getAttribute("student_num") == null){
+								out.print("<div id=\"loginbtn\" onclick=\"location.href='signin.jsp'\">LOG IN</div>");
+							}else{
+								if(!authority.equals("1"))
+									out.print("<div style=\"margin-right: 10px\"id=\"loginbtn\" onclick=\"location.href='infomation.jsp'\">내 정보</div>");
+								out.print("<div id=\"loginbtn\" onclick=\"location.href='signout.jsp'\">LOG OUT</div>");
+							}
+						%>
                 	</form>
-					<%
-						if((String)session.getAttribute("student_num") == null){
-							out.print("<div id=\"loginbtn\" onclick=\"location.href='signin.jsp'\">LOG IN</div>");
-						}else{
-							if(!authority.equals("1"))
-								out.print("<div style=\"margin-right: 10px\"id=\"loginbtn\" onclick=\"location.href='infomation.jsp'\">내 정보</div>");
-							out.print("<div id=\"loginbtn\" onclick=\"location.href='signout.jsp'\">LOG OUT</div>");
-						}
-					%>
                 </div>
             </nav>
             <img src="public/images/square.png" id="hbg" onclick="active_menubar()"/>
