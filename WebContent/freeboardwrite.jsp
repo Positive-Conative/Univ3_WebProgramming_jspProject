@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@page import="com.webServer.DatabaseManager"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
+<%session.removeAttribute("info_check");%>
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="freeBoard_DAO" scope="page" class="com.webServer.freeBoardDAO"/>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <jsp:useBean id="report_DAO" scope="page" class="com.webServer.serviceCenterDAO"/>
+<%session.removeAttribute("info_check");%>
 <jsp:setProperty name="report_DAO" property="*"/>
 <!DOCTYPE html>
 <html>

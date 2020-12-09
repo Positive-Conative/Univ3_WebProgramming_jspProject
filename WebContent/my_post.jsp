@@ -4,6 +4,7 @@
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
+<%session.removeAttribute("info_check");%>
 <!DOCTYPE html>
 
 <%
@@ -28,7 +29,7 @@
 	<table style="width: 100%; padding-left: 5%; padding-right: 5%;">
 		<tr>
 			<td class="front_main">
-				<div class="menu"><a href="./infomation.jsp">개인 정보 수정</a></div><br>
+				<div class="menu"><a href="./info_check.jsp">개인 정보 수정</a></div><br>
 				<div class="menu"><a href="./my_post.jsp">사용자 글 확인</a></div><br>
 			</td>
 			<td class="back_main">

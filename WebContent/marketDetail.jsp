@@ -6,6 +6,7 @@
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="marketBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
 <link href="public/stylesheets/board.css" rel="stylesheet"/>
+<%session.removeAttribute("info_check");%>
 <%
 	String user_id = null;
 

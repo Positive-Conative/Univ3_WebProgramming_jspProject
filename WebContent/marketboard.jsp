@@ -5,6 +5,7 @@
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="market_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
+<%session.removeAttribute("info_check");%>
 <link href="public/stylesheets/board.css" rel="stylesheet"/>
 <body>
     <section class="SCcontent">

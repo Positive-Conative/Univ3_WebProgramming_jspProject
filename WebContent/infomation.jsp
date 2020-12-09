@@ -10,6 +10,11 @@
 	if((String)session.getAttribute("student_num") == null){
 		response.sendRedirect("index.jsp");
 	}
+
+	if((String)session.getAttribute("info_check") != "check"){
+		response.sendRedirect("index.jsp");
+	}
+
 	JSONObject result = user_infoDAO.get_info((String)session.getAttribute("student_num"));
 	String get_phone = result.get("3").toString();
 	String ph1 = get_phone.substring(0, 3);
@@ -31,7 +36,7 @@
 	<table style="width: 100%; padding-left: 5%; padding-right: 5%;">
 		<tr>
 			<td class="front_main">
-				<div class="menu"><a href="./infomation.jsp">개인 정보 수정</a></div><br>
+				<div class="menu"><a href="./info_check.jsp">개인 정보 수정</a></div><br>
 				<div class="menu"><a href="./my_post.jsp">사용자 글 확인</a></div><br>
 			</td>
 			<td class="back_main">
@@ -157,7 +162,8 @@ request.setCharacterEncoding("UTF-8");
 if(request.getParameter("pwch")!=null && request.getParameter("pw")!=null && request.getParameter("name")!=null && request.getParameter("ph1")!=null && request.getParameter("ph2")!=null && request.getParameter("ph3")!=null && request.getParameter("address")!=null){
 	String phone = request.getParameter("ph1") + request.getParameter("ph2") + request.getParameter("ph3");
 	if(user_infoDAO.change_info((String)session.getAttribute("student_num"), request.getParameter("pw"), request.getParameter("name"), phone, request.getParameter("address"))){
-		
+		session.removeAttribute("info_check");
+		out.println("<script>location.href=\'info_check.jsp \' </script>");
 	}
 }	
 %>
