@@ -33,6 +33,31 @@
 					%>
                 </div>
             </nav>
+            <img src="public/images/square.png" id="hbg" onclick="active_menubar()"/>
+            <div id="hbg_menubar">
+                <div id="mark_X" onclick="closeMenu()">x</div>
+                <table id="menubar_table">
+                    <tr>
+                        <td>거래게시판</td>
+                    </tr>
+                    <tr>
+                        <td>자유게시판</td>
+                    </tr>
+                    <tr>
+                        <td>고객센터</td>
+                    </tr>
+                    <tr>
+                        <td>개발자 정보</td>
+                    </tr>
+                    <tr>
+                        <td>관리자</td>
+                    </tr>
+                    <tr>
+                        <td>로그인</td>
+                    </tr>
+                </table>
+                <div id="menubar_footer"><div>Hoseo World</div></div>
+            </div>
         </header>
         
         <style>
@@ -44,3 +69,23 @@
         		color:red;
         	}
         </style>
+		<script>
+		      function active_menubar(){
+		          document.getElementById('hbg_menubar').style.display='inline-block';
+		          document.getElementById('hbg').style.display='none';
+		      }
+		      function closeMenu(){
+		          document.getElementById('hbg').style.display='inline-block';
+		          document.getElementById('hbg_menubar').style.display="none";
+		      }
+		      window.addEventListener('resize', (e)=>{
+		          if(e.srcElement.innerWidth > 1000){
+		              document.getElementById('hbg_menubar').style.display="none";
+		              document.getElementById('hbg').style.display="none";
+		          }else{
+		              
+		              document.getElementById('hbg').style.display="inline-block";
+		              document.getElementById('hbg_menubar').style.display="none";
+		          }
+		      })
+		</script>
