@@ -2,7 +2,7 @@
     pageEncoding="utf-8"%>
     
 </body>
-    <footer>
+    <footer align="left">
         <h3>호서나라<br>Hoseo World</h3>
         <hr>
         <p>Copyright © 2021 Team Undefined404 All rights reserved.</p>

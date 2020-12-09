@@ -6,6 +6,14 @@
 <%@ page import="org.json.simple.JSONArray"%>
 <!DOCTYPE html>
 
+<%
+	if((String)session.getAttribute("student_num") == null){
+		out.print("<script>alert('로그인 후 이용할 수 있는 기능입니다.');</script>");
+		out.print("<script>window.history.back()</script>");
+	}
+	else{
+%>
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -102,3 +110,7 @@ function back(){
 }
 
 </script>
+
+<%
+	}
+%>

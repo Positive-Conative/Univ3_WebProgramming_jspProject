@@ -9,11 +9,16 @@
 <jsp:useBean id="freeBoard_DAO" scope="page" class="com.webServer.freeBoardDAO"/>
 <link href="public/stylesheets/board.css" rel="stylesheet"/>
 <%
+	String user_id = null;
+
+	if((String)session.getAttribute("student_num") != null){
+		user_id = (String)session.getAttribute("student_num");
+	}
 	if(	request.getParameter("Comments")!=null 
 		){
 		String NumVal=request.getParameter("Num");
 		out.println("<script>alert('등록되었습니다.');location.href='freedetail.jsp?"+NumVal+"</script>");
-		freeBoard_DAO.inputcommentToDB(request.getParameter("C_Writer"),request.getParameter("Num"),request.getParameter("Comments"));
+		freeBoard_DAO.inputcommentToDB(user_id,request.getParameter("Num"),request.getParameter("Comments"));
 
 	}
 %>
@@ -73,9 +78,12 @@
             </tbody>
         </table>
         <br><br><br><br>
-       
+      	<%
+				if((String)session.getAttribute("student_num") == null){
+				}
+				else{%>
+				       
       	<form method="post">
-      	<input type="hidden" name="C_Writer" value="김동헌"/>
       	<div align=center>
       		<h3>댓 글 작 성</h3> 
       		<table>
@@ -87,7 +95,8 @@
       			</table>
       		<input id="submitBtn" type="submit" class="bt" value="등록"/>		   		
 		</div>
-      	</form><br><br>
+      	</form><br><br><%}
+		%>
       	<table align=center class="commentDetail">
       		<tbody>
                 <%

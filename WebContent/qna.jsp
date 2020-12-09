@@ -88,6 +88,15 @@
             </tbody>
         </table>
         <div style="text-align: right; margin-right:15vw ">
-            <input type="button" class="bt" value="글 작성하기" onclick="location.href='qnaWrite.jsp'"/>
+            <%
+			if((String)session.getAttribute("student_num") == null){
+			
+			}
+			else{
+				out.print("<input type=\"button\" class=\"bt\" value=\"글 작성하기\" onclick=\"location.href='qnaWrite.jsp'\"/>");				
+			}
+			%>
         </div>
     </section>
+    
+    <%@ include file="import/footer.jsp" %>

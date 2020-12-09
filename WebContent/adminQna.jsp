@@ -6,6 +6,23 @@
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="admin_DAO" scope="page" class="com.webServer.adminDAO"/>
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
+
+<%
+	authority = null;
+    if((String)session.getAttribute("student_num") != null){
+    	authority = user_infoDAO.get_authority((String)session.getAttribute("student_num"));
+		if(authority.equals("1")){
+			
+		}
+		else{
+			out.print("<script>window.history.back()</script>");
+		}
+    }
+    else{
+    	out.print("<script>window.history.back()</script>");
+    }
+%>
+
     <section class="SCcontent">
         <div class="imgarea">
             <img src="public/images/mainimg1.jpg">

@@ -29,6 +29,7 @@
 	        <a href=""><div class="mg">비밀번호를 잊으셨나요?</div></a>
     	</div>
 </body>
+</html>
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -55,5 +56,3 @@ function back(){
     window.history.back();
 }
 </script>
-
-</html>

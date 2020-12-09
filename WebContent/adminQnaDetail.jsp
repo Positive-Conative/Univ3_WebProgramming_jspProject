@@ -9,6 +9,23 @@
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
 
 <%
+	authority = null;
+    if((String)session.getAttribute("student_num") != null){
+    	authority = user_infoDAO.get_authority((String)session.getAttribute("student_num"));
+		if(authority.equals("1")){
+			
+		}
+		else{
+			out.print("<script>window.history.back()</script>");
+		}
+    }
+    else{
+    	out.print("<script>window.history.back()</script>");
+    }
+%>
+
+
+<%
 	if(request.getParameter("admin_coment")!=null){
 		
 		out.println("<script>alert('등록되었습니다.'); location.href='adminQna.jsp?pnum=1'</script>");

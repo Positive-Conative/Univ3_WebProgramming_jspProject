@@ -7,11 +7,16 @@
 <jsp:useBean id="marketBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
 <link href="public/stylesheets/board.css" rel="stylesheet"/>
 <%
+	String user_id = null;
+
+	if((String)session.getAttribute("student_num") != null){
+		user_id = (String)session.getAttribute("student_num");
+	}
 	if(	request.getParameter("M_Comment")!=null 
 		){
 		String NumVal=request.getParameter("mid");
 		out.println("<script>alert('등록되었습니다.');location.href='marketDetail.jsp?"+NumVal+"</script>");
-		marketBoard_DAO.inputcommentToDB(request.getParameter("M_Writer"),request.getParameter("mid"),request.getParameter("M_Comment"));
+		marketBoard_DAO.inputcommentToDB(user_id,request.getParameter("mid"),request.getParameter("M_Comment"));
 
 	}
 %>
@@ -66,20 +71,25 @@
             </tbody>
         </table>
         <br><br><br><br>
-      	<form method="post">
-      	<input type="hidden" name="M_Writer" value="김동헌"/>
+      	
+      	<%
+				if((String)session.getAttribute("student_num") == null){
+				}
+				else{%>
+		<form method="post">
       	<div align=center>
       		<h3>댓 글 작 성</h3> 
       		<table>
       		  <tbody>
       			 <tr>
-      			 	<textarea cols="10" name="M_Comment" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea><br>
+      			 	<textarea cols="10" name="Comments" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea><br>
       			 </tr>	
       				</tbody>	    
       			</table>
       		<input id="submitBtn" type="submit" class="bt" value="등록"/>		   		
 		</div>
-      	</form><br><br>
+      	</form><br><br><%}
+		%>
        	<table align=center class="commentDetail">
       		<tbody>
                 <%

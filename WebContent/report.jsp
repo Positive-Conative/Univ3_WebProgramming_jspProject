@@ -9,6 +9,15 @@
 <jsp:useBean id="report_DO" scope="page" class="com.webServer.reportDO"/>
 <jsp:setProperty name="report_DO" property="*"/>
 
+<% 
+	if((String)session.getAttribute("student_num") == null){
+		out.print("<script>alert('로그인 후 이용할 수 있는 기능입니다.');</script>");
+		out.print("<script>window.history.back()</script>");
+	}
+	else{
+		
+		String user_id = (String)session.getAttribute("student_num");
+%>
 <%
 	//DatabaseManager dm = new DatabaseManager();
 	//String a = dm.LoadTest();
@@ -49,7 +58,7 @@
                                 <tbody>
                                 	<tr>
                                        <th>신고자 ID<br><small>(신고하는 자)</small></th>
-                                       <th>Conative's</th> 
+                                       <th><%= user_id %></th> 
                                        <th>피신고자 ID<br><small>(신고받는 자)</small></th>
                                        <th>
                                       		<input type="text" name="accused" style="width:80%" placeholder="신고하려는 사람의 ID를 작성"/>
@@ -82,3 +91,7 @@
     
     <script>
     </script>
+    <%
+		}
+    %>
+    <%@ include file="import/footer.jsp" %>
