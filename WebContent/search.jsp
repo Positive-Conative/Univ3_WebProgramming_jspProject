@@ -22,7 +22,12 @@
 		
         <table class="content">
                 <tr>
-                    <%@ include file="import/navi.jsp" %>
+					<th id="navi" valign="top">
+					    <div>
+					        <li onclick="location.href='marketboard.jsp?pnum=1'">거래게시판</li>
+					        <li onclick="location.href='freeboard.jsp?pnum=1'">자유게시판</li>
+					    </div>
+					</th>
                     <td id="main_content">
                         <div>
                             <h1>검 색 결 과</h1>
@@ -50,7 +55,6 @@
 										for(int i=(pnum-1) * MAX_LIST_SIZE; i<pnum * MAX_LIST_SIZE; i++){
 											try{
 												JSONObject element = (JSONObject)resultArr.get(i);
-												out.println((String)element.get("Title"));
 												String mid = (String)element.get("mid");
 												String Writer = (String)element.get("Writer");
 												String Title = (String)element.get("Title");
