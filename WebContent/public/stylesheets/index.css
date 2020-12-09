@@ -295,6 +295,74 @@ section h1{
  .bt:hover{
     background-color: #66d1f5;
  }
+ 
+ @media(max-width:1000px){
+    nav{display:none}
+    #hbg{
+        display:inline-block;
+        float:right;
+        max-width:3rem;
+        cursor:pointer;
+    }
+    #hbg:hover{
+        width:30%;
+        background-color: lightgray;
+    }
+    #hbg_menubar{
+        font-family: "maple";
+        display:none;
+        background-color: lightgray;
+        opacity: 90%;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width:20%;
+        height:100%;
+        z-index: 199999;
+        text-align:center;
+    }
+    #menubar_table{
+        margin-top:2rem;
+        width:100%;
+        table-layout: fixed;
+    }
+    header #menubar_table tr{
+        height:4em;
+        cursor: pointer;
+    }
+    header #menubar_table tr :hover{
+        background-color: gray;
+    }
+    #menubar_footer{
+	 	position: fixed;
+		bottom: 0;
+		right: 0;
+		width: 20%;
+    }
+    #menubar_footer div{
+    }
+    #mark_X{
+        font-size:2rem;
+        float:right;
+        cursor: pointer;
+    }
+    #mark_X:hover{
+        color:red;
+    }
+    #mainimg_text{
+	    position: absolute;
+	    top:30%;
+	    left:30%;
+	    transform: translate(-50%, -50%);
+	    color: white;
+	    z-index: 2;
+	    text-align: center;
+	}
+}
+@media(min-width:1001px){
+    #hbg{display:none}
+    #hbg_menubar, #hbg_menubar>#menubar_table, #mark_X{display:none}
+}
 /*.developer_section .card:active{
     background-color: gray;
     position: relative;
