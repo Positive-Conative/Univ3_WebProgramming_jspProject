@@ -116,4 +116,21 @@ public boolean inputcommentToDB(String M_Writer,String bn, String M_Comment) thr
 	return true;
 	
 }
+
+	public String getSearchData(String search) throws SQLException {
+		ResultSet rs = dm.dbLoad("SELECT * FROM market WHERE (Title LIKE '%"+search+"%' OR Content LIKE '%"+search+"%' or Writer LIKE '%"+search+"%');", null, "select");
+		JSONArray result = new JSONArray();
+		while(rs.next()) {
+			JSONObject obj = new JSONObject();
+			obj.put("mid", rs.getString("mid"));
+			obj.put("Writer", rs.getString("Writer"));
+			obj.put("Title", rs.getString("Title"));
+			obj.put("Content", rs.getString("Content"));
+			obj.put("Price", rs.getString("Price"));
+			obj.put("Date", rs.getString("Date"));
+			obj.put("img_src", rs.getString("img_src"));
+			result.add(obj);
+		}
+		return result.toString();
+	}
 }

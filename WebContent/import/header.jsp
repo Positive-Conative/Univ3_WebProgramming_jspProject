@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="user_infoDAO" scope="page" class="com.webServer.user_infoDAO"/>
+<jsp:useBean id="maktetBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -30,8 +31,11 @@
                 	}
                 %>
                 <div class="navRight">
-                    <input type="text" placeholder="Search"/>
-                    <button class="bt" type="submit" style="width:25px;"><img src="public/images/loupe.png"></button>
+                	<form method=get action="search.jsp">
+	                    <input type="hidden" name="pnum" value="1"/>
+	                    <input type="text" name="search" placeholder="Search"/>
+	                    <button class="bt" type="submit" style="width:25px;"><img src="public/images/loupe.png"></button>
+                	</form>
 					<%
 						if((String)session.getAttribute("student_num") == null){
 							out.print("<div id=\"loginbtn\" onclick=\"location.href='signin.jsp'\">LOG IN</div>");
