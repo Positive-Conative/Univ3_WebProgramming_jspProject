@@ -35,7 +35,7 @@ request.setCharacterEncoding("UTF-8");
 
 if(request.getParameter("num")!=null && request.getParameter("pw")!=null){
 	int login_value = user_infoDAO.signin(request.getParameter("num"), request.getParameter("pw"));
-	if(login_value==1){
+	if(login_value == 1){
 		out.println("<script>alert('Success')</script>");
 		session.setAttribute("student_num", request.getParameter("num"));
 		response.sendRedirect("index.jsp");
