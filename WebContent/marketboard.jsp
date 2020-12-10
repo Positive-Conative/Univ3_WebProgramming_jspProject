@@ -36,14 +36,12 @@
 					String Writer = (String)element.get("Writer");
 					String Date = (String)element.get("Date");
 		%>		
-            <div class="card" onclick="location.href = 'marketDetail.jsp?mid=<%= mid %>'">
-            <img src="public/images/<%= img_src %>"/>
+            <div class="card" style="width:17vw" onclick="location.href = 'marketDetail.jsp?mid=<%= mid %>'">
+            <img style="width:100%"src="public/images/<%= img_src %>"/>
                 <!--  <img src="/Users/Conative_NB/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Univ3_WebProgramming_jspProject/SaveImgs/<%= img_src %>"/>-->
                 <%=Title %><br>
-                <%=Price %>원<br>
-                 <%=Date %>
-                <div class="card_footer">
-                    <%=Writer %>
+                <div class="card_footer" style="text-align:center">
+                    <%=Date %>
                 </div>
             </div>
             <%}catch(Exception e){ continue; }}%>
