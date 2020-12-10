@@ -1,0 +1,36 @@
+.form{
+	border-radius: 15px;
+	background-color: white;
+	text-align: center;
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 15px;
+}
+
+@font-face {
+	font-family: "maple";
+	src: url('./font/Maplestory\ Light.ttf');
+	font-weight: normal;
+	font-style: normal;
+}   
+
+@font-face {
+	font-family: "maple-b";
+	src: url('./font/Maplestory\ Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.bt{
+	border-radius: 15px;
+	width: 150px;
+	height: 30px;
+	border: none;
+	background-color: #BEEFFF;
+	font-size: 15px;
+	padding: 5px;
+	margin: 5px;
+	outline: none;
+	font-family: "maple-b";
+}
