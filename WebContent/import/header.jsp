@@ -40,7 +40,7 @@
 								out.print("<div id=\"loginbtn\" onclick=\"location.href='signin.jsp'\">LOG IN</div>");
 							}else{
 								if(!authority.equals("1"))
-									out.print("<div style=\"margin-right: 10px\"id=\"loginbtn\" onclick=\"location.href='infomation.jsp'\">내 정보</div>");
+									out.print("<div style=\"margin-right: 10px\"id=\"loginbtn\" onclick=\"location.href='info_check.jsp'\">내 정보</div>");
 								out.print("<div id=\"loginbtn\" onclick=\"location.href='signout.jsp'\">LOG OUT</div>");
 							}
 						%>
@@ -77,7 +77,7 @@
 							out.print("<tr><td onclick=\"location.href='signin.jsp'\">LOG IN</td></tr>");
 						}else{
 							if(!authority.equals("1"))
-								out.print("<tr onclick=\"location.href='infomation.jsp'\"><td>내 정보</td></tr>");
+								out.print("<tr onclick=\"location.href='info_check.jsp'\"><td>내 정보</td></tr>");
 							out.print("<tr onclick=\"location.href='signout.jsp'\"><td>LOG OUT</td></tr>");
 							
 						}

@@ -6,6 +6,7 @@
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="marketBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
 <link href="public/stylesheets/board.css" rel="stylesheet"/>
+<%session.removeAttribute("info_check");%>
 <%
 	String user_id = null;
 
@@ -82,7 +83,7 @@
       		<table>
       		  <tbody>
       			 <tr>
-      			 	<textarea cols="10" name="Comments" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea><br>
+      			 	<textarea cols="10" name="M_Comments" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea><br>
       			 </tr>	
       				</tbody>	    
       			</table>

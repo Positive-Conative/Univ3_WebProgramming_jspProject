@@ -12,6 +12,13 @@
 	font-style: normal;
 }
 
+.prev{
+	width: 20px;
+	height: 20px;
+	margin-top: 20px;
+	margin-left: 83%;
+}
+
 a:hover{
 	color: #000000;
 	text-decoration: none;
@@ -83,7 +90,7 @@ input::placeholder{
 
 .form{
 	width: 650px;
-	height: 750px;
+	height: 770px;
 	border-radius: 15px;
 	background-color: white;
 	text-align: center;
@@ -100,7 +107,6 @@ input::placeholder{
 
 .head{
     font-size: 40px;
-    margin-top: 30px;
     margin-bottom: 30px;
 }
 

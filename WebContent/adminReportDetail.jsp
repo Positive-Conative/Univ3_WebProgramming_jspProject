@@ -3,6 +3,7 @@
 <%@ include file="import/header.jsp" %>
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
+<%session.removeAttribute("info_check");%>
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="admin_DAO" scope="page" class="com.webServer.adminDAO"/>
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>

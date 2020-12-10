@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ include file="import/header.jsp" %>
+<%session.removeAttribute("info_check");%>
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
 
 <section class="SCcontent">
