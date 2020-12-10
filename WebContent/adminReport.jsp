@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ include file="import/header.jsp" %>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>

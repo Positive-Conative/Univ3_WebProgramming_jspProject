@@ -6,6 +6,7 @@
 <%@ page import="org.json.simple.JSONArray"%>
 <!DOCTYPE html>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <%
 	if((String)session.getAttribute("student_num") == null){
 		response.sendRedirect("index.jsp");

@@ -6,6 +6,7 @@
     pageEncoding="utf-8"%>
 <%@ include file="import/header.jsp" %>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <jsp:useBean id="serviceCenterDAO" scope="page" class="com.webServer.serviceCenterDAO"/>
 <jsp:useBean id="report_DO" scope="page" class="com.webServer.reportDO"/>
 <jsp:setProperty name="report_DO" property="*"/>

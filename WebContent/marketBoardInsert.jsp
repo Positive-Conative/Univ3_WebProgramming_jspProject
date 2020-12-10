@@ -3,6 +3,8 @@
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <jsp:useBean id="marketBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
+<%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <%
 
 	if((String)session.getAttribute("student_num") == null){

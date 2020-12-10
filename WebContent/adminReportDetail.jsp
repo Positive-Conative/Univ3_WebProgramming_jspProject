@@ -4,6 +4,7 @@
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <%@ page import="org.json.simple.JSONArray"%>
 <jsp:useBean id="admin_DAO" scope="page" class="com.webServer.adminDAO"/>
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>

@@ -4,6 +4,7 @@
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <jsp:useBean id="user_infoDAO" scope="page" class="com.webServer.user_infoDAO"/>
 <!DOCTYPE html>
 

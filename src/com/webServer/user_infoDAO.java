@@ -39,6 +39,43 @@ public class user_infoDAO {
 		}
 	}
 	
+	public boolean check_user(String num, String name, String phone) throws SQLException{
+		
+		JSONObject parameters = new JSONObject();
+		
+		parameters.put("1", num);
+		parameters.put("2", name);
+		parameters.put("3", phone);
+		
+		String exist = null;
+		
+		ResultSet rs = dm.dbLoad("SELECT EXISTS(SELECT * FROM user_info WHERE id=? AND name=? AND phone=?) AS isChk", parameters, "select");
+		
+		while(rs.next())
+        {
+        	exist = rs.getString("isChk");
+        }
+        
+        if(exist.equals("1"))
+        	return true;
+        else
+        	return false;
+	}
+	
+	public boolean change_pw(String id, String pw) throws SQLException{
+		
+		JSONObject parameters = new JSONObject();
+		
+		pw = encrypt(pw);
+		
+		parameters.put("1", pw);
+		parameters.put("2", id);
+		
+		ResultSet rs = dm.dbLoad("UPDATE user_info Set pw=? WHERE id=?", parameters, "insert");
+		
+		return true;
+	}
+	
 	public String get_name(String num) throws SQLException{
 		
 		JSONObject parameters = new JSONObject();

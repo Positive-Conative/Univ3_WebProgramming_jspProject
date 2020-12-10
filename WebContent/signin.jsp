@@ -5,6 +5,7 @@
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <jsp:useBean id="user_infoDAO" scope="page" class="com.webServer.user_infoDAO"/>
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
         		<input type="submit" class="bt" value="로그인"><br>
         	</form>
         	<a href="./signup.jsp"><button class="bt">회원가입</button></a><br>
-	        <a href=""><div class="mg">비밀번호를 잊으셨나요?</div></a>
+	        <a href="./find_info.jsp"><div class="mg">비밀번호를 잊으셨나요?</div></a>
     	</div>
 </body>
 </html>
