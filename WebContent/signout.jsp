@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <!DOCTYPE html>
 <html>
 <head>

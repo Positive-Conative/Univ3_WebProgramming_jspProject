@@ -5,6 +5,7 @@
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <jsp:useBean id="notice_DAO" scope="page" class="com.webServer.serviceCenterDAO"/>
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
 

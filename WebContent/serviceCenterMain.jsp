@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ include file="import/header.jsp" %>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <link href="public/stylesheets/serviceCenter.css" rel="stylesheet"/>
 
 <section class="SCcontent">

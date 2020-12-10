@@ -8,6 +8,7 @@
 <jsp:useBean id="board_DAO" scope="page" class="com.webServer.freeBoardDAO"/>
 
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <%
 /* Session Check
 	if((String)session.getAttribute("student_num") == null){

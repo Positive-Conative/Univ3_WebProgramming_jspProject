@@ -5,6 +5,7 @@
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <!DOCTYPE html>
 
 <%

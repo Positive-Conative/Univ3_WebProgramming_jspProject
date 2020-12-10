@@ -7,6 +7,7 @@
 <jsp:useBean id="marketBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
 <link href="public/stylesheets/board.css" rel="stylesheet"/>
 <%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <%
 	String user_id = null;
 

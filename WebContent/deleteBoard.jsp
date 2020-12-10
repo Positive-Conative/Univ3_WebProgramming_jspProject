@@ -3,6 +3,8 @@
 <jsp:useBean id="freeBoard_DAO" scope="page" class="com.webServer.freeBoardDAO"/>
 <jsp:useBean id="marketBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
 <link href="public/stylesheets/deleteBoard.css" rel="stylesheet"/>
+<%session.removeAttribute("info_check");%>
+<%session.removeAttribute("check_info");%>
 <!DOCTYPE html>
 
 <%
