@@ -21,29 +21,24 @@
         </div>
 
         <form  enctype="multipart/form-data" method="POST" action="marketBoardInsert.jsp">
+        <input type="hidden" name="writer" />
         <table class="content">
 		<tr>
-	      <th>작성자 ID</th>
-	      <td colspan="3">
-	       <input type="text" name="writer" />
-		   </td>
-		</tr>
-		<tr>
-		    <th>제 목</th>
+		    <th>제목</th>
 		    <td colspan="3">
-				<input type="text" name="title" placeholder="첨부파일 첨부"/>
+		     	<input type="text" name="title" style="width:90%" placeholder="제목을 입력하세요"/>
 		    </td>
 		</tr>
 		<tr>
-		    <th>내 용</th>
+		    <th>내용</th>
 		    <td colspan=3>
-		    	<textarea cols="30" name="Content" rows="30" style="width: 90%; resize:none;" placeholder="내용을 작성해주세요 ex)제품 설명, 전화번호 or 카톡 ID.." ></textarea> 
+		    	<textarea cols="30" name="Content" rows="30" style="width: 90%; resize:none;" >거래 시 주의사항! &#13;&#10;허구 사실을 기재 및 사기 적발 시 형사처벌을 받으실 수 있습니다!!!&#13;&#10; 1. 제품 설명 : &#13;&#10; 2. 연락 가능한 전화번호 입력 : &#13;&#10; 3. 추가 설명 :</textarea> 
 		    </td>
 		</tr>
 		<tr>
-			<th>가격</th>
+			<th>희망 가격</th>
 			<td colspan="3">
-		    	<input type="text" name="Price" style="width:90%" placeholder="판매 가격을 적어주세요"/>
+		    	<input type="text" name="Price" style="width:30%" placeholder="희망 판매 가격을 적어주세요"/>￦
 		    </td>
 		</tr>
 		<tr>

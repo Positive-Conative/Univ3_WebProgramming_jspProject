@@ -13,8 +13,7 @@
 	if((String)session.getAttribute("student_num") != null){
 		user_id = (String)session.getAttribute("student_num");
 	}
-	if(	request.getParameter("M_Comment")!=null 
-		){
+	if(	request.getParameter("M_Comment")!=null ){
 		String NumVal=request.getParameter("mid");
 		out.println("<script>alert('등록되었습니다.');location.href='marketDetail.jsp?"+NumVal+"</script>");
 		marketBoard_DAO.inputcommentToDB(user_id,request.getParameter("mid"),request.getParameter("M_Comment"));
@@ -43,9 +42,8 @@
 			String Price = (String)element.get("Price");
 			String Date = (String)element.get("Date");
 			String img_src = (String)element.get("img_src");
-
-			
 		%>
+        <img src="public/images/<%=img_src%>" style="width:80%;margin-bottom:3rem;"/>
         <table align=center class="marketDetail">
             <tbody>
                 <tr>
@@ -59,13 +57,12 @@
                     <td colspan="3"> <%= Title %> </td>
                 </tr>
                 <tr>
-                	<th>가격</th>
+                	<th>희망 가격</th>
                 	<td colspan="3"><%=Price %>원</td>
                 </tr>
                 <tr>
                     <th>내용</th>
                     <td colspan="3">
-                    	<%=img_src %><br>
                         <%= Content %>
                     </td>
                 </tr>
@@ -83,7 +80,7 @@
       		<table>
       		  <tbody>
       			 <tr>
-      			 	<textarea cols="10" name="M_Comments" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea><br>
+      			 	<textarea cols="10" name="M_Comment" rows="10" style="width:70%; resize:none;" placeholder="내용을 작성해주세요" ></textarea><br>
       			 </tr>	
       				</tbody>	    
       			</table>
@@ -91,7 +88,14 @@
 		</div>
       	</form><br><br><%}
 		%>
-       	<table align=center class="commentDetail">
+       	<table align=center class="commentDetail" border=1 style="border-collapse: collapse;width:80%">
+       		<thead style="background-color:lightgray">
+       			<tr>
+       				<th>학번</th>
+       				<th>내용</th>
+       				<th>작성일자</th>
+       			</tr>
+       		</thead>
       		<tbody>
                 <%
 					String comment_data = marketBoard_DAO.getOneCommentResults(request.getParameter("mid"));
@@ -101,7 +105,9 @@
 					
 					//out.print(b);
 					//out.print(resultArr.size());
-					
+					if(resultArr1.size()==0)
+						out.println("<tr><td colspan=3>작성된 댓글이 존재하지 않습니다!</td></tr>");
+					else if(resultArr1.size()!=0)
 					for(int i=0; i<resultArr1.size(); i++){
 						try{
 							JSONObject element1 = (JSONObject)resultArr1.get(i);
@@ -110,17 +116,17 @@
 							String M_Comment = (String)element1.get("M_Comment");
 							String M_Date = (String)element1.get("M_Date");
 				%>
-				<tr >
-                             <td><%= M_Writer %></td>
-                             <td><%= M_Comment %></td>
-                             <td><%= M_Date %></td>
-                      </tr>
+				<tr>
+	                <td><%= M_Writer %></td>
+	                <td><%= M_Comment %></td>
+	                <td><%= M_Date %></td>
+                </tr>
 				<%}catch(Exception e){ continue; }}%>
       		</tbody>
       	</table>
-        <br>
+		<br>
         <div style="text-align: right; margin-right:15vw ">
-            <input type="button" class="bt" value="뒤로가기" onclick="history.back()"/>
+            <input type="button" class="bt" value="목록으로 이동" onclick="location.href='marketboard.jsp?pnum=1'"/>
         </div>
     </section>
     <%@ include file="import/footer.jsp" %>
