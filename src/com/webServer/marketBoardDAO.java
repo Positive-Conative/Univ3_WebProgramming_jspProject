@@ -31,6 +31,45 @@ public class marketBoardDAO {
 		return result.toString();
 	}
 
+public boolean change_content(String boardNum, String Title, String Content, String price, String img_src) throws SQLException{
+		
+		JSONObject parameters = new JSONObject();
+        
+        parameters.put("1", Title);
+        parameters.put("2", Content);
+        parameters.put("3", price);
+        parameters.put("4", img_src);
+        parameters.put("5", boardNum);
+        
+        ResultSet rs = dm.dbLoad("UPDATE market Set Title=?, Content=?, Price=?, Date=now(), img_src=? WHERE mid=?", parameters, "insert");
+		
+		return true;
+	}
+	
+	public JSONObject get_content(String board_Num) throws SQLException{
+		JSONObject parameters = new JSONObject();
+		String get_writer = null;
+		String get_title = null;
+		String get_content = null;
+		String get_price = null;
+		parameters.put("1", board_Num);
+		ResultSet rs = dm.dbLoad("SELECT * FROM market WHERE mid=?", parameters, "select");
+		while(rs.next()) {
+			get_writer = rs.getString("Writer");
+			get_title = rs.getString("Title");
+			get_content = rs.getString("Content");
+			get_price = rs.getString("Price");
+		}
+		
+		JSONObject result = new JSONObject();
+		result.put("1", get_writer);
+		result.put("2", get_title);
+		result.put("3", get_content);
+		result.put("4", get_price);
+		
+		return result;
+	}
+	
 	public boolean deleteToDB(String Num) throws SQLException{
 		JSONObject parameters = new JSONObject();
 		

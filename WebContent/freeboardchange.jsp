@@ -9,7 +9,8 @@
 <%@include file="import/header.jsp" %>
 
 <%
-
+	JSONObject result = new JSONObject(); 
+	String board_num = new String();
 	if((String)session.getAttribute("student_num") == null){
 		out.print("<script>alert('로그인 후 이용할 수 있는 기능입니다.');</script>");
 		out.print("<script>window.history.back()</script>");
@@ -19,11 +20,22 @@
 %>
 
 <%
+	if(request.getParameter("boardNum") == null){
+		out.print("<script>window.history.back()</script>");
+	}
+	else{
+		board_num = (String)request.getParameter("boardNum");
+		
+		
+		result = freeBoard_DAO.get_content((String)request.getParameter("boardNum"));
+	}
+%>
+
+<%
 	if(	request.getParameter("Title")!=null && 
 		request.getParameter("Content")!=null){
-		
-		out.println("<script>alert('등록되었습니다.'); location.href='freeboard.jsp?pnum=1'</script>");
-		freeBoard_DAO.inputboardToDB(user_id,request.getParameter("Title"), request.getParameter("Content"));
+			out.println("<script>alert('수정되었습니다.'); location.href='freeboard.jsp?pnum=1'</script>");
+			freeBoard_DAO.change_content(board_num, request.getParameter("Title"), request.getParameter("Content"));
 	}
 %>
 
@@ -37,6 +49,7 @@
             </div>
         </div>
         <form method="post">
+        	<input type="hidden" name="boardNum" value="<%= board_num %>" id="boardNum">
         <table class="content">
             <tbody>
                 <tr>
@@ -56,19 +69,19 @@
                                     <tr>
                                         <th>제 목</th>
                                         <td colspan="3">
-                                        	<input type="text" name="Title" style="width:90%" placeholder="제목을 작성해주세요"/>
+                                        	<input type="text" name="Title" style="width:90%" placeholder="제목을 작성해주세요" value="<%= result.get("2") %>"/>
                                         </td>
                                     </tr>	
                                     <tr>
                                         <th>내 용</th>
                                         <td colspan=3>
-                                        	<textarea cols="30" name="Content" rows="25" style="width: 90%; resize:none;" placeholder="내용을 작성해주세요" ></textarea> 
+                                        	<textarea cols="30" name="Content" rows="25" style="width: 90%; resize:none;" placeholder="내용을 작성해주세요"><%= result.get("3") %></textarea> 
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                             <div class="bottom_btn" align="right" style="margin-right:10vw">
-                            	<input id="submitBtn" type="submit" class="bt" value="등록"/>
+                            	<input id="submitBtn" type="submit" class="bt" value="수정"/>
                             </div>
                         </div>
                     </td>

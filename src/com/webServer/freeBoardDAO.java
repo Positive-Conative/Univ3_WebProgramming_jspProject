@@ -24,6 +24,40 @@ public class freeBoardDAO {
 		return result.toString();
 	}
 	
+	public boolean change_content(String boardNum, String Title, String Content) throws SQLException{
+		
+		JSONObject parameters = new JSONObject();
+
+        parameters.put("1", Title);
+        parameters.put("2", Content);
+        parameters.put("3", boardNum);
+        
+        ResultSet rs = dm.dbLoad("UPDATE board Set Title=?, Content=?, Date=now() WHERE Num=?", parameters, "insert");
+		
+		return true;
+	}
+	
+	public JSONObject get_content(String board_Num) throws SQLException{
+		JSONObject parameters = new JSONObject();
+		String get_writer = null;
+		String get_title = null;
+		String get_content = null;
+		parameters.put("1", board_Num);
+		ResultSet rs = dm.dbLoad("SELECT * FROM board WHERE Num=?", parameters, "select");
+		while(rs.next()) {
+			get_writer = rs.getString("Writer");
+			get_title = rs.getString("Title");
+			get_content = rs.getString("Content");
+		}
+		
+		JSONObject result = new JSONObject();
+		result.put("1", get_writer);
+		result.put("2", get_title);
+		result.put("3", get_content);
+		
+		return result;
+	}
+	
 	public boolean deleteToDB(String Num) throws SQLException{
 		JSONObject parameters = new JSONObject();
 		
@@ -35,14 +69,13 @@ public class freeBoardDAO {
 		return true;
 	}
 	
-	public boolean inputboardToDB(String Writer, String Title, String Content, String File) throws SQLException {
+	public boolean inputboardToDB(String Writer, String Title, String Content) throws SQLException {
         JSONObject parameters = new JSONObject();
         parameters.put("1", Writer);
         parameters.put("2", Title);
         parameters.put("3", Content);
-        parameters.put("4", File);
 //        System.out.println("hello holy " + accused_id);
-		ResultSet rs = dm.dbLoad("INSERT INTO board(Writer,Title,Content,Date,File) values(?,?,?,now(),?)", parameters, "insert");
+		ResultSet rs = dm.dbLoad("INSERT INTO board(Writer,Title,Content,Date) values(?,?,?,now())", parameters, "insert");
 //		JSONArray result = new JSONArray();
 //		while(rs.next()) {
 //			JSONObject obj = new JSONObject();
