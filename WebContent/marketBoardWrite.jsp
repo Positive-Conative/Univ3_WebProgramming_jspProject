@@ -11,6 +11,15 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@include file="import/header.jsp" %>
 
+<%
+	if((String)session.getAttribute("student_num") == null){
+		out.print("<script>alert('로그인 후 이용할 수 있는 기능입니다.');</script>");
+		out.print("<script>window.history.back()</script>");
+	}
+	else{
+		String user_id = (String)session.getAttribute("student_num");
+%>
+
     <section class="SCcontent">
         <div class="imgarea">
             <img src="public/images/mainimg1.jpg">
@@ -25,13 +34,13 @@
 		<tr>
 	      <th>작성자 ID</th>
 	      <td colspan="3">
-	       <input type="text" name="writer" />
+	       	<div style="text-align: left; margin-left: 1%"><%= user_id %></div>
 		   </td>
 		</tr>
 		<tr>
 		    <th>제 목</th>
 		    <td colspan="3">
-				<input type="text" name="title" placeholder="첨부파일 첨부"/>
+				<input type="text" name="title" placeholder="제목을 작성해주세요."/>
 		    </td>
 		</tr>
 		<tr>
@@ -59,4 +68,6 @@
 	    </div>
         </form>
     </section>
+    <% } %>
+    <%@ include file="import/footer.jsp" %>
     

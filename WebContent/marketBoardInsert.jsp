@@ -4,6 +4,16 @@
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <jsp:useBean id="marketBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
 <%
+
+	if((String)session.getAttribute("student_num") == null){
+		out.print("<script>alert('로그인 후 이용할 수 있는 기능입니다.');</script>");
+		out.print("<script>window.history.back()</script>");
+	}
+	else{
+		String user_id = (String)session.getAttribute("student_num");
+%>
+
+<%
     // 파일이 저장되는 경로
     String path = request.getSession().getServletContext().getRealPath("public/images");
 	//String path = request.getRealPath("/..");
@@ -25,8 +35,9 @@
         originalFile = multi.getOriginalFileName(str); // 원래의 파일이름 가져옴
 
         out.println("<script>alert('등록되었습니다.'); location.href='marketboard.jsp?pnum=1'</script>");
-		marketBoard_DAO.inputmarketToDB(multi.getParameter("writer"),multi.getParameter("title"), multi.getParameter("Content"),multi.getParameter("Price"), file);
+		marketBoard_DAO.inputmarketToDB(user_id, multi.getParameter("title"), multi.getParameter("Content"),multi.getParameter("Price"), file);
     } catch (Exception e) {
         e.printStackTrace();
     }
+	}
 %>
