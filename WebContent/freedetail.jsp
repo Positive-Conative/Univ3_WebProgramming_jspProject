@@ -62,6 +62,10 @@
             <tbody>            
                 <tr>
                     <th>작성자</th>
+                    <%
+						String name = user_infoDAO.get_name(Writer);
+						Writer = Writer + " (" + name + ")";
+					%>
                     <td><%= Writer %></td>
                     <th>작성 날짜</th>
                     <td><%= Date %></td>
@@ -98,7 +102,14 @@
 		</div>
       	</form><br><br><%}
 		%>
-      	<table align=center class="commentDetail">
+      	<table align=center class="commentDetail" border=1 style="border-collapse: collapse;width:80%">
+       		<thead style="background-color:lightgray">
+       			<tr>
+       				<th width="20%">작성자</th>
+       				<th width="60%">내용</th>
+       				<th width="20%">작성일자</th>
+       			</tr>
+       		</thead>
       		<tbody>
                 <%
 					String comment_data = freeBoard_DAO.getOneCommentResults(request.getParameter("Num"));
@@ -108,24 +119,29 @@
 					
 					//out.print(b);
 					//out.print(resultArr.size());
+					if(resultArr1.size()==0)
+						out.println("<tr><td colspan=3>작성된 댓글이 존재하지 않습니다!</td></tr>");
+					else if(resultArr1.size()!=0)
 					for(int i=0; i<resultArr1.size(); i++){
 						try{
 							JSONObject element1 = (JSONObject)resultArr1.get(i);
 							String cid= (String)element1.get("cid");
 							String C_Writer = (String)element1.get("C_Writer");			
 							String Comment = (String)element1.get("Comment");
-							String C_Date = (String)element1.get("C_DATE");
+							String C_Date = (String)element1.get("C_Date");
+							
+							name = user_infoDAO.get_name(C_Writer);
+							C_Writer = C_Writer + " (" + name + ")";
 				%>
-				<tr >
-                             <td><%= C_Writer %></td>
-                             <td><%= Comment %></td>
-                             <td><%= C_Date %></td>
-                      </tr>
+				<tr>
+	                <td><%= C_Writer %></td>
+	                <td><%= Comment %></td>
+	                <td><%= C_Date %></td>
+                </tr>
 				<%}catch(Exception e){ continue; }}%>
       		</tbody>
       	</table>
-      	
-        <br><br><br><br>
+        <br>
         <div style="text-align: right; margin-right:15vw ">
         	<%
             	if(Writer.equals(user_id)){

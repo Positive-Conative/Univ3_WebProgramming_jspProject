@@ -10,8 +10,9 @@ import java.text.SimpleDateFormat;
 public class marketBoardDAO {
 	DatabaseManager dm = new DatabaseManager();
 	
+	@SuppressWarnings("unchecked")
 	public String getAllResult() throws SQLException {
-		ResultSet rs = dm.dbLoad("SELECT * FROM market", null, "select");
+		ResultSet rs = dm.dbLoad("SELECT * FROM market ORDER BY mid DESC", null, "select");
 		JSONArray result = new JSONArray();
 		SimpleDateFormat fm = new SimpleDateFormat("yy/MM/dd");
 		while(rs.next()) {
@@ -25,7 +26,6 @@ public class marketBoardDAO {
 			obj.put("img_src", rs.getString("img_src"));
 			obj.put("Date2", fm.format(rs.getObject("Date")));
 
-			
 			result.add(obj);
 		}
 		return result.toString();
@@ -81,7 +81,7 @@ public boolean change_content(String boardNum, String Title, String Content, Str
 		return true;
 	}
 	
-public boolean inputmarketToDB(String Writer, String Title, String Price,String Content, String img_src) throws SQLException {
+public boolean inputmarketToDB(String Writer, String Title, String Content, String Price, String img_src) throws SQLException {
     JSONObject parameters = new JSONObject();
     parameters.put("1", Writer);
     parameters.put("2", Title);
@@ -147,7 +147,7 @@ public String getOneCommentResults(String mid) throws SQLException {
 
     parameters.put("1", mid);
 	ResultSet rs = dm.dbLoad("SELECT * FROM marketcomment WHERE m_board_num=?", parameters, "select");
-	SimpleDateFormat fm = new SimpleDateFormat("yy/MM/dd hh:MM");
+	SimpleDateFormat fm = new SimpleDateFormat("yy/MM/dd hh:mm");
 
 	JSONArray result2 = new JSONArray();
 	while(rs.next()) {

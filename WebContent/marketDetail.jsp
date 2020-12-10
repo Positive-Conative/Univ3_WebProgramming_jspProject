@@ -43,6 +43,10 @@
 			String Date = (String)element.get("Date");
 			String img_src = (String)element.get("img_src");
 		%>
+		<%
+			String name = user_infoDAO.get_name(Writer);
+			Writer = Writer + " (" + name + ")";
+		%>
         <img src="public/images/<%=img_src%>" style="width:80%;margin-bottom:3rem;"/>
         <table align=center class="marketDetail">
             <tbody>
@@ -91,9 +95,9 @@
        	<table align=center class="commentDetail" border=1 style="border-collapse: collapse;width:80%">
        		<thead style="background-color:lightgray">
        			<tr>
-       				<th>학번</th>
-       				<th>내용</th>
-       				<th>작성일자</th>
+       				<th width="20%">학번</th>
+       				<th width="60%">내용</th>
+       				<th width="20%">작성일자</th>
        			</tr>
        		</thead>
       		<tbody>
@@ -115,6 +119,9 @@
 							String M_Writer = (String)element1.get("M_Writer");			
 							String M_Comment = (String)element1.get("M_Comment");
 							String M_Date = (String)element1.get("M_Date");
+							
+							name = user_infoDAO.get_name(M_Writer);
+							M_Writer = M_Writer + " (" + name + ")";
 				%>
 				<tr>
 	                <td><%= M_Writer %></td>

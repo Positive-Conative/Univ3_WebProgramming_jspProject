@@ -6,6 +6,7 @@ import org.json.simple.JSONObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.json.simple.JSONArray;
 
@@ -24,6 +25,16 @@ public class serviceCenterDAO {
 		}
 		return result.toString();
 	}
+	
+	public String get_time() {
+		
+		SimpleDateFormat fm = new SimpleDateFormat ( "yy/MM/dd/ HH:mm");
+		
+		Date time = new Date();
+		
+		return fm.format(time);
+	}
+	
 	public String getOneResult(String uid) throws SQLException {
         JSONObject parameters = new JSONObject();
 

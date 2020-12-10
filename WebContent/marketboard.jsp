@@ -37,7 +37,7 @@
 					String Date = (String)element.get("Date");
 		%>		
             <div class="card" style="width:17vw" onclick="location.href = 'marketDetail.jsp?mid=<%= mid %>'">
-            <img style="width:100%"src="public/images/<%= img_src %>"/>
+            <img style="width: 100%" src="public/images/<%= img_src %>"/>
                 <!--  <img src="/Users/Conative_NB/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Univ3_WebProgramming_jspProject/SaveImgs/<%= img_src %>"/>-->
                 <%=Title %><br>
                 <div class="card_footer" style="text-align:center">

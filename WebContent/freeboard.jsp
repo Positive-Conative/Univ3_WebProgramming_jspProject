@@ -56,6 +56,10 @@
 										%>
 										<tr onclick="location.href = 'freedetail.jsp?Num=<%= Num %>'">
 	                                        <td><%= i+1 %></td>
+	                                        <%
+												String name = user_infoDAO.get_name(Writer);
+												Writer = Writer + " (" + name + ")";
+											%>
 	                                        <td><%= Title %></td>
 	                                        <td><%= Writer %></td>   
                                     	</tr>

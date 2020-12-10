@@ -41,7 +41,7 @@
 		<tr>
 		    <th>내용</th>
 		    <td colspan=3>
-		    	<textarea cols="30" name="Content" rows="30" style="width: 90%; resize:none;" >거래 시 주의사항! &#13;&#10;허구 사실을 기재 및 사기 적발 시 형사처벌을 받으실 수 있습니다!!!&#13;&#10; 1. 제품 설명 : &#13;&#10; 2. 연락 가능한 전화번호 입력 : &#13;&#10; 3. 추가 설명 :</textarea> 
+		    	<textarea cols="30" name="Content" rows="30" style="width: 90%; resize:none;" placeholder="허구 사실을 기재 및 사기 적발 시 형사처벌을 받으실 수 있습니다."></textarea> 
 		    </td>
 		</tr>
 		<tr>
