@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <link href="public/stylesheets/board.css" rel="stylesheet"/>
 <%@page import="com.webServer.DatabaseManager"%>
 <%@page import="org.json.simple.parser.JSONParser"%>

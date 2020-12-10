@@ -1,6 +1,6 @@
 <%@page import="com.sun.jdi.Location"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
 <%@ page import="org.json.simple.JSONArray"%>
@@ -47,7 +47,7 @@ if(request.getParameter("num")!=null && request.getParameter("pw")!=null){
 		out.println("<script>alert('해당 ID는 현재 정지 상태입니다')</script>");
 	}
 	else{
-		out.println("<script>alert('Fail')</script>");
+		out.println("<script>alert('정보가 맞지 않습니다. 다시 시도해주세요.')</script>");
 	}
 }
 %>

@@ -3,7 +3,7 @@
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@ include file="import/header.jsp" %>
 <%session.removeAttribute("info_check");%>
 <%session.removeAttribute("check_info");%>

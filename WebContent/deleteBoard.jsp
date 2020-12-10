@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <jsp:useBean id="freeBoard_DAO" scope="page" class="com.webServer.freeBoardDAO"/>
 <jsp:useBean id="marketBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>
 <link href="public/stylesheets/deleteBoard.css" rel="stylesheet"/>

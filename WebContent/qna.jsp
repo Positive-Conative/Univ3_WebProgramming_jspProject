@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@ include file="import/header.jsp" %>
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
@@ -15,8 +15,8 @@
             <img src="public/images/mainimg1.jpg">
             <div class="img_text">
                 <h1>고객센터</h1>
-                고객님의 크고 작은 목소리를 들려주세요. <br> 
-                작은 소리는 무시하겠습니다.(?)
+                                고객님의 크고 작은 목소리를 들려주세요. <br> 
+                항상 고객님께서 최선의 서비스를 받으실 수 있도록 도와드리겠습니다.
             </div>
         </div>
         <table class="content">

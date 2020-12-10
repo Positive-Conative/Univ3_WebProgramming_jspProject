@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@ include file="import/header.jsp" %>
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
@@ -14,7 +14,7 @@
             <img src="public/images/mainimg1.jpg">
             <div class="img_text">
                 <h1>거래 게시판</h1>
-                		글 등록을 통해 거래를 하세요. 
+                		글을 작성하여 다른 사람들과 거래를 시작해보세요.
             </div>
         </div>
        <div class="board">

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@page import="com.webServer.DatabaseManager"%>
 <%@page import="org.json.simple.parser.JSONParser"%>
 <%session.removeAttribute("info_check");%>

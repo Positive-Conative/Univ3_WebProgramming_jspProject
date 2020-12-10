@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <jsp:useBean id="user_infoDAO" scope="page" class="com.webServer.user_infoDAO"/>
 <%session.removeAttribute("info_check");%>
 <!DOCTYPE html>
 <%
 	if((String)session.getAttribute("check_info") == null){
-		out.print("<script>alert('Àß¸øµÈ Á¢±ÙÀÔ´Ï´Ù.');</script>");
+		out.print("<script>alert('ì˜ëª»ëœ ì ‘ê·¼ì…ë‹ˆë‹¤.');</script>");
 		response.sendRedirect("index.jsp");
 	}
 
@@ -32,16 +32,16 @@
 <body>
     <div onsubmit="return sub()" class="form">
     	<a href="#"><img class="prev" src="./public/images/exit1.png" alt="" onclick="back()"></a><br>
-        <div class="head">PW º¯°æ</div>
+        <div class="head">PW ë³€ê²½</div>
         <hr color="lightgray" width="350px">
         <div class="r"></div>
 
 		<form method="POST">
-        	<div align=left class="label">ºñ¹Ğ¹øÈ£</div>
-        	<input type="password" class="input_value" id="pw" onblur="passwd_check()" placeholder="ºñ¹Ğ¹øÈ£ (¿µ¹®ÀÚ, ¼ıÀÚ Æ÷ÇÔ 10ÀÚ¸® ÀÌ»ó)" name="pw">
-        	<div align=left class="label">ºñ¹Ğ¹øÈ£ È®ÀÎ</div>
-        	<input type="password" class="input_value" id="pwch" onblur="equals()" placeholder="ºñ¹Ğ¹øÈ£ È®ÀÎ" name="pwch">
-        	<input class="sub" type="submit" value="º¯°æ">
+        	<div align=left class="label">ë¹„ë°€ë²ˆí˜¸</div>
+        	<input type="password" class="input_value" id="pw" onblur="passwd_check()" placeholder="ë¹„ë°€ë²ˆí˜¸ (ì˜ë¬¸ì, ìˆ«ì í¬í•¨ 10ìë¦¬ ì´ìƒ)" name="pw">
+        	<div align=left class="label">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</div>
+        	<input type="password" class="input_value" id="pwch" onblur="equals()" placeholder="ë¹„ë°€ë²ˆí˜¸ í™•ì¸" name="pwch">
+        	<input class="sub" type="submit" value="ë³€ê²½">
         </form>
     </div>
 </body>
