@@ -24,6 +24,16 @@ public class freeBoardDAO {
 		return result.toString();
 	}
 	
+	public boolean deleteToDB(String Num) throws SQLException{
+		JSONObject parameters = new JSONObject();
+		
+		parameters.put("1", Num);
+		
+		ResultSet rs = dm.dbLoad("DELETE FROM comment WHERE board_num=?", parameters, "insert");
+		rs = dm.dbLoad("DELETE FROM board WHERE Num=?", parameters, "insert");
+		
+		return true;
+	}
 	
 	public boolean inputboardToDB(String Writer, String Title, String Content, String File) throws SQLException {
         JSONObject parameters = new JSONObject();

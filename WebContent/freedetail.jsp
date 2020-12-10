@@ -127,6 +127,35 @@
       	
         <br><br><br><br>
         <div style="text-align: right; margin-right:15vw ">
+        	<%
+            	if(Writer.equals(user_id)){
+           	%>
+            		<form action="deleteBoard.jsp" method="POST" style="display: inline;" id="formdata">
+            			<input type="submit" class="bt" value="수정하기"/>
+            		</form>
+            		<form method="POST" style="display: inline;" id="frmData" name="frmData">
+            			<input type="hidden" name="boardType" value="free" id="boardType">
+            			<input type="hidden" name="boardNum" value="<%= Num %>" id="boardNum">
+            		</form>
+            		<a href="#" onclick="openPop()"><button class="bt">삭제하기</button></a>
+            <%
+            	}
+            %>	
             <input type="button" class="bt" value="뒤로가기" onclick="history.back()"/>
         </div>
     </section>
+
+<script>
+function openPop(){
+    var pop_title = "popupOpener" ;
+     
+    window.open("deleteBoard.jsp", pop_title, "width=240, height=240") ;
+     
+    var frmData = document.frmData ;
+    frmData.target = pop_title ;
+    frmData.action = "deleteBoard.jsp" ;
+     
+    frmData.submit() ;
+}
+
+</script>

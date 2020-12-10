@@ -140,6 +140,27 @@ public class user_infoDAO {
 		}
 	}
 	
+	public int isChk_user(String id) throws SQLException{
+		
+		JSONObject parameters = new JSONObject();
+		
+		String exist = null;
+		
+		parameters.put("1", id);
+		
+		ResultSet rs = dm.dbLoad("SELECT EXISTS(SELECT * FROM user_info WHERE id=?) AS isChk", parameters, "select");
+		
+		while(rs.next())
+        {
+        	exist = rs.getString("isChk");
+        }
+        
+        if(exist.equals("0"))
+        	return 0;
+        else
+        	return 1;
+	}
+	
 	public int signup(String id, String pw, String name, String phone) throws SQLException{
 		JSONObject parameters_s = new JSONObject();
 		

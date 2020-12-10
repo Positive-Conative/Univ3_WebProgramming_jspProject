@@ -32,8 +32,13 @@
 		request.getParameter("title")!=null &&
 		request.getParameter("content")!=null){
 		
-		out.println("<script>alert('등록되었습니다.')</script>");
-		serviceCenterDAO.inputReportToDB("NoName",request.getParameter("accused"), request.getParameter("title"), request.getParameter("content"));
+		if(user_infoDAO.isChk_user(request.getParameter("accused")) == 1){
+			out.println("<script>alert('등록되었습니다.')</script>");
+			serviceCenterDAO.inputReportToDB(user_id,request.getParameter("accused"), request.getParameter("title"), request.getParameter("content"));
+		}
+		else{
+			out.println("<script>alert('해당 ID를 가진 사용자가 없습니다.')</script>");
+		}
 
 	}
 %>

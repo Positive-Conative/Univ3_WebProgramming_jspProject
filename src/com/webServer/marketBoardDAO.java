@@ -31,6 +31,17 @@ public class marketBoardDAO {
 		return result.toString();
 	}
 
+	public boolean deleteToDB(String Num) throws SQLException{
+		JSONObject parameters = new JSONObject();
+		
+		parameters.put("1", Num);
+		
+		ResultSet rs = dm.dbLoad("DELETE FROM marketcomment WHERE m_board_num=?", parameters, "insert");
+		rs = dm.dbLoad("DELETE FROM market WHERE mid=?", parameters, "insert");
+		
+		return true;
+	}
+	
 public boolean inputmarketToDB(String Writer, String Title, String Price,String Content, String img_src) throws SQLException {
     JSONObject parameters = new JSONObject();
     parameters.put("1", Writer);
