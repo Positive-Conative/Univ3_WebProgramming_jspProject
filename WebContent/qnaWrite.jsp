@@ -17,14 +17,15 @@
 		out.print("<script>window.history.back()</script>");
 	}
 	else{
-		
+		String user_id = (String)session.getAttribute("student_num");
+		String time = serviceCenterDAO.get_time();
 %>
 
 <%
 	if( request.getParameter("content")!=null &&
 		request.getParameter("title")!=null){
 		
-		serviceCenterDAO.inputQnaToDB("NoName",request.getParameter("title"), request.getParameter("content"));
+		serviceCenterDAO.inputQnaToDB(user_id,request.getParameter("title"), request.getParameter("content"));
 		out.println("<script>alert('등록되었습니다.'); location.href='qna.jsp?pnum=1'</script>");
 	}
 %>
@@ -50,10 +51,10 @@
                                 <tbody>
                                 	<tr>
                                        <th>작성 ID<br></th>
-                                       <th>Conative's</th> 
+                                       <th><%= user_id %></th> 
                                        <th>현재 시간<br></th>
                                        <th>
-                                      		ㅁㄴㅇㄹ
+                                      		<%= time %>
                                        </th>
                                     </tr>
                                     <tr>

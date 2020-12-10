@@ -51,7 +51,7 @@
 					String Date2 = (String)element.get("Date2");
 		%>	
         <div class="card" onclick="location.href = 'marketDetail.jsp?mid=<%= mid %>'">
-           <img src="public/images/<%=img_src%>"/>
+           <img style="width: 100%" src="public/images/<%=img_src%>"/>
            <%=Title%>
            <div class="card_footer">
        		<%=Writer%>

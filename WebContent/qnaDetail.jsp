@@ -30,6 +30,9 @@
 			String admin_coment = (String)element.get("admin_coment");
 			String date = (String)element.get("date");
 			String admin_date = (String)element.get("admin_date");
+			
+			String name = user_infoDAO.get_name(writer);
+			writer = writer + " (" + name + ")";
 		%>
         <table align=center class="faqDetail">
             <tbody>

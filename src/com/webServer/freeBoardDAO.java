@@ -12,7 +12,7 @@ public class freeBoardDAO {
 	DatabaseManager dm = new DatabaseManager();
 	
 	public String getAllResult() throws SQLException {
-		ResultSet rs = dm.dbLoad("SELECT * FROM board", null, "select");
+		ResultSet rs = dm.dbLoad("SELECT * FROM board ORDER BY Num DESC", null, "select");
 		JSONArray result = new JSONArray();
 		while(rs.next()) {
 			JSONObject obj = new JSONObject();
@@ -126,7 +126,7 @@ public class freeBoardDAO {
 
         parameters.put("1", Num);
 		ResultSet rs = dm.dbLoad("SELECT * FROM comment WHERE board_num=?", parameters, "select");
-		SimpleDateFormat fm = new SimpleDateFormat("yy/MM/dd hh:MM");
+		SimpleDateFormat fm = new SimpleDateFormat("yy/MM/dd hh:mm");
 
 		JSONArray result2 = new JSONArray();
 		while(rs.next()) {
@@ -135,7 +135,7 @@ public class freeBoardDAO {
 			obj.put("cid", rs.getString("cid"));
 			obj.put("C_Writer", rs.getString("C_Writer"));
 			obj.put("Comment", rs.getString("Comment"));
-			obj.put("C_DATE", fm.format(rs.getObject("C_DATE")));
+			obj.put("C_Date", fm.format(rs.getObject("C_Date")));
 			result2.add(obj);
 		}
 		return result2.toString();

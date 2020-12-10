@@ -39,6 +39,20 @@ public class user_infoDAO {
 		}
 	}
 	
+	public String get_name(String num) throws SQLException{
+		
+		JSONObject parameters = new JSONObject();
+		
+		String get_name = null;
+		parameters.put("1", num);
+		ResultSet rs = dm.dbLoad("SELECT name FROM user_info WHERE id=?", parameters, "select");
+		while(rs.next()) {
+			get_name = rs.getString("name");
+		}
+		
+		return get_name;
+	}
+	
 	public String get_authority(String num) throws SQLException{
 		
 		JSONObject parameters = new JSONObject();

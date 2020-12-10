@@ -54,6 +54,9 @@
 											String writer = (String)element.get("writer");
 											String content = (String)element.get("content");
 											String admin_coment = (String)element.get("admin_coment");
+											
+											String name = user_infoDAO.get_name(writer);
+											writer = writer + " (" + name + ")";
 								%>
 								<tr onclick="location.href='qnaDetail.jsp?qid=<%= qid %>'">
 	                                <td><%= i+1 %></td>
