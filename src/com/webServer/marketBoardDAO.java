@@ -21,7 +21,7 @@ public class marketBoardDAO {
 			obj.put("Content", rs.getString("Content"));
 			obj.put("Price", rs.getString("Price"));
 			obj.put("Date", rs.getString("Date"));
-			obj.put("Title", rs.getString("img_src"));
+			obj.put("img_src", rs.getString("img_src"));
 
 			
 			result.add(obj);
@@ -36,6 +36,11 @@ public boolean inputmarketToDB(String Writer, String Title, String Price,String 
     parameters.put("3", Content);
     parameters.put("4", Price);
     parameters.put("5", img_src);
+    System.out.println(Writer);
+    System.out.println(Title);
+    System.out.println(Content);
+    System.out.println(Price);
+    System.out.println(img_src);
 //    System.out.println("hello holy " + accused_id);
 	ResultSet rs = dm.dbLoad("INSERT INTO market(Writer,Title,Content,Price,Date,img_src) values(?,?,?,?,now(),?)", parameters, "insert");
 //	JSONArray result = new JSONArray();
