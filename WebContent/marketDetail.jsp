@@ -123,7 +123,8 @@
         <%
             	if(Writer.equals(user_id)){
            	%>
-            		<form action="deleteBoard.jsp" method="POST" style="display: inline;" id="formdata">
+            		<form action="marketBoardchange.jsp" method="POST" style="display: inline;" id="formdata">
+            			<input type="hidden" name="boardNum" value="<%= Num %>" id="boardNum">
             			<input type="submit" class="bt" value="수정하기"/>
             		</form>
             		<form method="POST" style="display: inline;" id="frmData" name="frmData">

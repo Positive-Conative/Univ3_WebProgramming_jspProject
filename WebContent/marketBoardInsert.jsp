@@ -26,16 +26,21 @@
     try{
         MultipartRequest multi = new MultipartRequest(request, path, size, "UTF-8", new DefaultFileRenamePolicy());
 
-    	out.println("<script>alert('"+path+"')</script>");
-    	out.println("<script>alert('dd')</script>");
         Enumeration files = multi.getFileNames();
         String str = (String)files.nextElement(); // 파일 이름을 받아와 string으로 저장
 
         file = multi.getFilesystemName(str); // 업로드 된 파일 이름 가져옴
         originalFile = multi.getOriginalFileName(str); // 원래의 파일이름 가져옴
 
-        out.println("<script>alert('등록되었습니다.'); location.href='marketboard.jsp?pnum=1'</script>");
-		marketBoard_DAO.inputmarketToDB(user_id, multi.getParameter("title"), multi.getParameter("Content"),multi.getParameter("Price"), file);
+        if(multi.getParameter("boardNum") == null){
+        	out.println("<script>alert('등록되었습니다.'); location.href='marketboard.jsp?pnum=1'</script>");
+			marketBoard_DAO.inputmarketToDB(user_id, multi.getParameter("title"), multi.getParameter("Content"),multi.getParameter("Price"), file);
+        }
+        else{
+        	String board_num = multi.getParameter("boardNum");
+        	out.println("<script>alert('수정되었습니다.'); location.href='marketboard.jsp?pnum=1'</script>");
+        	marketBoard_DAO.change_content(board_num, multi.getParameter("title"), multi.getParameter("Content"), multi.getParameter("Price"), file);
+        }
     } catch (Exception e) {
         e.printStackTrace();
     }
