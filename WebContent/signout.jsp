@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%session.removeAttribute("info_check");%>
 <%session.removeAttribute("check_info");%>
 <!DOCTYPE html>
@@ -9,6 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%session.invalidate();  out.println("<script>alert('·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù!');location.href=\'index.jsp \' </script>"); %>
+	<%session.invalidate();  out.println("<script>alert('ë¡œê·¸ì•„ì›ƒ ë˜ì—ˆìŠµë‹ˆë‹¤!');location.href=\'index.jsp \' </script>"); %>
 </body>
 </html>

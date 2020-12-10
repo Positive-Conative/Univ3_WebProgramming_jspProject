@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@page import = "java.util.*" %>
 <%@ include file="import/header.jsp" %>
 <%session.removeAttribute("info_check");%>
@@ -65,9 +65,9 @@
                     <th>작성자</th>
                     <%
 						String name = user_infoDAO.get_name(Writer);
-						Writer = Writer + " (" + name + ")";
+						String Writera = Writer + " (" + name + ")";
 					%>
-                    <td><%= Writer %></td>
+                    <td><%= Writera %></td>
                     <th>작성 날짜</th>
                     <td><%= Date %></td>
                 </tr>

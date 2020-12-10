@@ -3,7 +3,7 @@
 <%@page import="org.json.simple.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@ include file="import/header.jsp" %>
 <%session.removeAttribute("info_check");%>
 <%session.removeAttribute("check_info");%>
@@ -50,7 +50,7 @@
             <div class="img_text">
                 <h1>신고하기</h1>
                 고객님의 크고 작은 목소리를 들려주세요. <br> 
-                작은 소리는 무시하겠습니다.(?)
+                항상 고객님께서 최선의 서비스를 받으실 수 있도록 도와드리겠습니다.
             </div>
         </div>
         <form method="post">

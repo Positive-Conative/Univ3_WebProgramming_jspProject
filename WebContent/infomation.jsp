@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@ include file="import/header.jsp" %>
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@ include file="import/header.jsp" %>
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
@@ -64,12 +64,15 @@
 												String Price = (String)element.get("Price");
 												String Date = (String)element.get("Date");
 												String img_src = (String)element.get("img_src");
+												
+												String name = user_infoDAO.get_name(Writer);
+												String Writera = Writer + " (" + name + ")";
 										%>
 										<tr onclick="location.href='marketDetail.jsp?mid=<%= mid %>'">
 	                                        <td><%= i+1 %></td>
 	                                        <td id="table_img_area"><img src="public/images/<%=img_src%>"/></td>
-	                                        <td><%= Writer %></td>
 	                                        <td><%= Title %></td>
+	                                        <td><%= Writera %></td>
                                     	</tr>
 										<%}catch(Exception e){ continue; }}%>
                                 </tbody>

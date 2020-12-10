@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8" errorPage = "error.jsp"%>
 <%@ include file="import/header.jsp" %>
 <%@ page import="org.json.simple.parser.JSONParser"%>
 <%@ page import="org.json.simple.JSONObject"%>
@@ -46,14 +46,14 @@
 		%>
 		<%
 			String name = user_infoDAO.get_name(Writer);
-			Writer = Writer + " (" + name + ")";
+			String Writera = Writer + " (" + name + ")";
 		%>
         <img src="public/images/<%=img_src%>" style="width:80%;margin-bottom:3rem;"/>
         <table align=center class="marketDetail">
             <tbody>
                 <tr>
                     <th>작성자</th>
-                    <td><%= Writer %></td>
+                    <td><%= Writera %></td>
                     <th>작성 날짜</th>
                     <td><%= Date %></td>
                 </tr>
