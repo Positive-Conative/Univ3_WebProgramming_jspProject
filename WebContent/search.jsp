@@ -65,7 +65,7 @@
 										%>
 										<tr onclick="location.href='marketDetail.jsp?mid=<%= mid %>'">
 	                                        <td><%= i+1 %></td>
-	                                        <td><img src="public/images/<%=img_src%>"/></td>
+	                                        <td id="table_img_area"><img src="public/images/<%=img_src%>"/></td>
 	                                        <td><%= Writer %></td>
 	                                        <td><%= Title %></td>
                                     	</tr>

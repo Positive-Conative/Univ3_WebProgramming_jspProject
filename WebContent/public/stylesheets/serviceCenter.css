@@ -24,7 +24,7 @@
     table-layout: fixed;
     width:100%;
 }
-.content table tbody tr td:nth-child(2){
+.content table tbody tr #table_img_area{
 	width:200px;
 	padding:20px;
 }
