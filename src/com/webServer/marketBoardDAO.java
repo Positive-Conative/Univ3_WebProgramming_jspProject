@@ -13,6 +13,7 @@ public class marketBoardDAO {
 	public String getAllResult() throws SQLException {
 		ResultSet rs = dm.dbLoad("SELECT * FROM market", null, "select");
 		JSONArray result = new JSONArray();
+		SimpleDateFormat fm = new SimpleDateFormat("yy/MM/dd");
 		while(rs.next()) {
 			JSONObject obj = new JSONObject();
 			obj.put("mid", rs.getString("mid"));
@@ -22,6 +23,7 @@ public class marketBoardDAO {
 			obj.put("Price", rs.getString("Price"));
 			obj.put("Date", rs.getString("Date"));
 			obj.put("img_src", rs.getString("img_src"));
+			obj.put("Date2", fm.format(rs.getObject("Date")));
 
 			
 			result.add(obj);
