@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+    pageEncoding="utf-8"  errorPage = "error.jsp"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <jsp:useBean id="user_infoDAO" scope="page" class="com.webServer.user_infoDAO"/>
 <jsp:useBean id="maktetBoard_DAO" scope="page" class="com.webServer.marketBoardDAO"/>

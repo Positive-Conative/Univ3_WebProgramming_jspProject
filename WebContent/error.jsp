@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isErrorPage="true"%>
 <%session.removeAttribute("info_check");%>
-<%session.removeAttribute("check_info");%>    
+<%session.removeAttribute("check_info");%>
+<%@page isErrorPage="true" %>
+<%response.setStatus(200); %>
 <!DOCTYPE html>
 <html>
 <head>
