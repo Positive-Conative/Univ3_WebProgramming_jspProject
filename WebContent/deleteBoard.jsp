@@ -23,10 +23,12 @@
 		else{
 			if(Type.equals("market")){
 				marketBoard_DAO.deleteToDB(Num);
+				out.print("<script>opener.parent.location='marketboard.jsp?pnum=1';</script>");
 				out.print("<script>window.close()</script>");
 			}
 			else if(Type.equals("free")){
 				freeBoard_DAO.deleteToDB(Num);
+				out.print("<script>opener.parent.location='freeboard.jsp?pnum=1';</script>");
 				out.print("<script>window.close()</script>");
 			}
 		}
